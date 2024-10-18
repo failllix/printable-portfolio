@@ -1,0 +1,19 @@
+---
+import Heading3 from "./Heading3.astro";
+
+const { title, degree, grade } = Astro.props;
+---
+
+<div>
+  <div>
+    <Heading3>
+      {title}
+    </Heading3>
+  </div>
+  <p>
+    {degree}
+  </p>
+  <p>
+    Final grade: {grade}
+  </p>
+</div>

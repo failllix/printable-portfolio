@@ -1,0 +1,20 @@
+---
+import Heading3 from "./Heading3.astro";
+
+const { title, role, start, end } = Astro.props;
+---
+
+<div>
+  <div class="sm:flex-row flex flex-col sm:items-center">
+    <Heading3 className="mt-0 mb-0">
+      {title}
+    </Heading3>
+    <span class="sm:block hidden ml-2"></span>
+    <span class="sm:block hidden h-4 border-l border-black"></span>
+    <span class="sm:block hidden mr-2"></span>
+    <span class="italic">{start} - {end}</span>
+  </div>
+  <p>
+    {role}
+  </p>
+</div>
