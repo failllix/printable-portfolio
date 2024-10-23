@@ -1,5 +1,7 @@
 ---
 const { className } = Astro.props;
+
+import { twMerge } from "tailwind-merge";
 ---
 
-<section class={className + " mt-8"}><slot /></section>
+<section class={twMerge("mt-8", className)}><slot /></section>

@@ -1,4 +1,5 @@
 ---
+import Paragraph from "./Paragraph.astro";
 import Heading3 from "./Heading3.astro";
 
 const { title, role, start, end } = Astro.props;
@@ -14,7 +15,7 @@ const { title, role, start, end } = Astro.props;
     <span class="sm:block hidden mr-2"></span>
     <span class="italic">{start} - {end}</span>
   </div>
-  <p>
+  <Paragraph className="my-0">
     {role}
-  </p>
+  </Paragraph>
 </div>

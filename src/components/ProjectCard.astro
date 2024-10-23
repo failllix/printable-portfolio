@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from "astro";
+import Paragraph from "./Paragraph.astro";
+import Heading3 from "./Heading3.astro";
+import CoCreator from "./CoCreator.astro";
+import Skill from "./Skill.astro";
+
+const { slug, projectData } = Astro.props;
+const { title, excerpt, year, skills, coCreators, coverImagePath, coverAlt } =
+  projectData;
+
+import { Image } from "astro:assets";
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../images/projects/*.{jpeg,jpg,png,gif}"
+);
+const imagePath = `../images/projects/${coverImagePath}`;
+if (!images[imagePath])
+  throw new Error(
+    `"${coverImagePath}" does not exist in: "src/images/projects/"`
+  );
+---
+
+<article class="relative isolate bg-gray-100 px-6 py-4 rounded-md">
+  <a class="absolute top-0 left-0 h-full w-full z-10" href={`/projects/${slug}`}
+  ></a>
+  <Heading3>
+    {title}
+  </Heading3>
+  <Paragraph className="italic">{year}</Paragraph>
+  <Paragraph
+    className={`mt-2 z-20 relative ${coCreators.length == 0 ? "hidden" : ""}`}
+  >
+    🙌 Co-Creators: {
+      coCreators.map((coCreator) => (
+        <CoCreator link={coCreator.link} name={coCreator.name} />
+      ))
+    }
+  </Paragraph>
+  <ul class="flex flex-row gap-2 flex-wrap">
+    {skills.map((skill) => <Skill>{skill}</Skill>)}
+  </ul>
+  <Paragraph>{excerpt}</Paragraph>
+  <Image
+    class="max-h-72 object-contain mt-4"
+    alt={coverAlt}
+    src={images[imagePath]()}
+  />
+</article>

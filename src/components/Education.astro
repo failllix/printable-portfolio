@@ -1,4 +1,5 @@
 ---
+import Paragraph from "./Paragraph.astro";
 import Heading3 from "./Heading3.astro";
 
 const { title, degree, grade } = Astro.props;
@@ -10,10 +11,10 @@ const { title, degree, grade } = Astro.props;
       {title}
     </Heading3>
   </div>
-  <p>
+  <Paragraph className="my-0">
     {degree}
-  </p>
-  <p>
+  </Paragraph>
+  <Paragraph className="my-0">
     Final grade: {grade}
-  </p>
+  </Paragraph>
 </div>

@@ -1,0 +1,61 @@
+---
+title: Dinermind
+year: 2020
+skills: ["Android", "Project Management", "Agile Planning"]
+coverImagePath: dinermind.png
+coverAlt: Image of a phone running the dinermind app
+coCreators:
+  [
+    {
+      name: "Felix Gerberding",
+      link: "https://www.linkedin.com/in/felix-gerberding/",
+    },
+    {
+      name: "Daria Kowalska",
+      link: "https://www.linkedin.com/in/dariakowalska/",
+    },
+  ]
+excerpt: The app Dinermind was created during our studies in the Module "App Development" and focuses on giving the user suggestions about what to have for diner. The idea originated from us three finding ourselves going through the same dishes over and over. The user will be notified after leaving a set place (e.g. work, school) and can choose from a couple of recipes and easily create a shopping list for the stop at the grocery store on the way home.
+---
+
+# Dinermind
+
+## Planning and Ideation
+
+### Basic conditions
+
+As this project was created during my app development course we were given some requirements by our lecturer to ensure a learning progress and use of certain features. We chose to meet the following:
+
+- API implementation
+- Master-Detail views
+- User preferences
+- Data persistency
+- Geo services
+
+### Finding an idea
+
+As my other studies evolve around topics like agile project planning and implementation. We chose to use the design thinking method to come up with a feasible idea. As a team we agreed to go into the field of food, cooking and taste, because all of us enjoy nice meals.
+
+After some time we recognized that we share a common problem of eating the same boring meals over and over again during the week due to a lack of inspiration and time pressure after a long day of work or studying. After refining our idea further, we settled on developing an app that would suggest up to five random recipes triggered by leaving a predefined geo fence to help inspire anybody in time trouble to cook healthy and diverse dinners.
+
+## Prototyping
+
+As soon as we came up with a concrete idea, we jumped into Adobe XD for prototyping. We tested various designs and added features like a favorite list and a shopping list to simplify buying groceries on your way home if you decided to cook one of the suggested meals.
+
+![Mockups of the dinermind app.](../../images/projects/dinermind_prototype_showcase.png)
+
+## Technology
+
+We used Android's Model, View, View-Model approach to handle and display our data. This had several benefits, because view models have their own lifecycles and can persist states like form inputs eventhough the lifecycle of the view changes due to a rotation of the device for example. To load recipes we used the API from spoonacular and stored received recipe data on the data to save network bandwith and improve performance as recipes would only be updated once a day.
+
+Further, we build our navigation using the Android X navigation components, like the navigation graph and its transitions in combination with motion layout. Overall this was a great experience and simplified building a nice UX with good looking transitions.
+
+For local storage we opted to use Room, which tied nicely into our view models for data handling.
+
+## Team organization
+
+We used Scrum to facilitate our collaboration. Choosing a sprint length of one week with standups every other day and review at the end of every week turned out to be good fit for our team and project. We also managed to mostly stick to this schedule and worked regularly on developing the app.
+
+## Conclusions
+
+All of us were very satisfied with the result we could achieve (which also ended in a very good grade 😉). Furthermore, all of us learned a lot about app development in Android. Not only on the technical side, but also what it means to properly collaborate on a codebase, to implement a good architecture and use mutual reviews to assure the quality of our code.

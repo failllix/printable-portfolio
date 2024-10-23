@@ -1,0 +1,6 @@
+---
+import Link from "./Link.astro";
+const { name, link } = Astro.props;
+---
+
+<Link class="underline" link={link}>{name} </Link>
