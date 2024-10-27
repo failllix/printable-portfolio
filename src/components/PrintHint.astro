@@ -1,0 +1,26 @@
+---
+import Paragraph from "./Paragraph.astro";
+import gitHubLogo from "../images/github-mark-white.jpg";
+---
+
+<script>
+  document.getElementById("print-button").addEventListener("click", () => {
+    window.print();
+  });
+</script>
+
+<div
+  class="print:hidden sticky bottom-0 left-0 flex items-center justify-center w-full px-6 py-1 bg-gray-800 text-white"
+>
+  <Paragraph className="text-center">
+    This page is optimized for <span
+      id="print-button"
+      class="px-2 py-1 bg-white text-black
+  rounded-md cursor-pointer"
+      >printing.</span
+    >
+  </Paragraph>
+  <a href="https://github.com/failllix/printable-portfolio">
+    <img class="ml-6 w-6 h-6" src="/github-mark-white.svg" alt="GitHub logo" />
+  </a>
+</div>
