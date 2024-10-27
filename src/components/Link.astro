@@ -1,7 +1,5 @@
 ---
-const { link } = Astro.props;
+const { href } = Astro.props;
 ---
 
-<a class="underline italic" href={link}>
-  <slot />
-</a>
+<a class="underline italic" href={href}><slot /></a>

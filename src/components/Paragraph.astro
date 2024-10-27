@@ -4,6 +4,4 @@ import { twMerge } from "tailwind-merge";
 const { className } = Astro.props;
 ---
 
-<p class={twMerge("my-3", className)}>
-  <slot />
-</p>
+<p class={twMerge("my-3", className)}><slot /></p>

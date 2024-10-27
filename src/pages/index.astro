@@ -7,6 +7,7 @@ import Heading1 from "../components/Heading1.astro";
 import Heading2 from "../components/Heading2.astro";
 import Section from "../components/Section.astro";
 import Skill from "../components/Skill.astro";
+import Certification from "../components/Certification.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 import profileImage from "../images/profile.jpg";
@@ -15,6 +16,12 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const allProjects = await getCollection("projects");
+const allCertificationsCollection = await getCollection("certifications");
+const allCertifications = allCertificationsCollection.sort(
+  (a, b) =>
+    b.data.icon.charCodeAt(0) - a.data.icon.charCodeAt(0) ||
+    ("" + a.data.name).localeCompare(b.data.name)
+);
 ---
 
 <html lang="en" class="print:size-auto print:m-0">
@@ -125,15 +132,27 @@ const allProjects = await getCollection("projects");
       />
     </Section>
     <Section>
-      <Heading2>Skills</Heading2>
+      <Heading2>Skills & Certifications</Heading2>
       <ul class="flex gap-4 flex-wrap">
         <Skill>Node.js</Skill>
         <Skill>Java</Skill>
         <Skill>Python</Skill>
         <Skill>React.js</Skill>
-        <Skill>S/4 HANA Cloud</Skill>
         <Skill>SAP UI5</Skill>
         <Skill>SAP Cloud Application Programming Model</Skill>
+      </ul>
+      <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
+        {
+          allCertifications.map(({ data }) => {
+            return (
+              <Certification
+                name={data.name}
+                link={data.link}
+                icon={data.icon}
+              />
+            );
+          })
+        }
       </ul>
     </Section>
     <Section className="print:hidden">
