@@ -1,4 +1,5 @@
 ---
+import CommonWrapper from "../layouts/CommonWrapper.astro";
 import WorkExperience from "../components/WorkExperience.astro";
 import Education from "../components/Education.astro";
 import Paragraph from "../components/Paragraph.astro";
@@ -24,148 +25,126 @@ const allCertifications = allCertificationsCollection.sort(
 );
 ---
 
-<html lang="en" class="print:size-auto print:m-0">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta charset="utf-8" />
-    <title>Felix Prünte</title>
-  </head>
-  <style>
-    @page {
-      size: auto;
-      margin: 5mm;
-    }
-  </style>
-  <body class="max-w-[1000px] mx-auto px-4 mb-8">
-    <Section className="flex justify-between items-center">
-      <div class="grow">
-        <Heading1 className="mt-0">Felix Prünte</Heading1>
-        <Paragraph>
-          Curios and dedicated Full Stack Engineer eager to build high-quality
-          applications.
-        </Paragraph>
-        <ul class="print:hidden flex gap-2 mt-4">
-          <li>
-            <Link
-              class="italic underline"
-              href="https://www.linkedin.com/in/felix-pruente/">LinkedIn</Link
-            >
-          </li>
-          <li>
-            <Link class="italic underline" href="https://github.com/failllix/"
-              >GitHub</Link
-            >
-          </li>
-          <li>
-            <Link class="italic underline" href="mailto:info@felix-pruente.de"
-              >Email</Link
-            >
-          </li>
-        </ul>
-        <ul class="print:block hidden mt-4">
-          <li>
-            <a href="https://www.linkedin.com/in/felix-pruente/"
-              >LinkedIn · Felix Prünte</a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/failllix/">GitHub · failllix</a>
-          </li>
-          <li>
-            <a href="mailto:info@felix-pruente.de"
-              >Email · info@felix-pruente.de</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div class="ml-4 basis-48 shrink min-w-32">
-        <Image
-          src={profileImage}
-          alt="Felix Prünte profile image"
-          class="object-cover rounded-lg"
-        />
-      </div>
-    </Section>
-    <Section>
-      <Heading2>About</Heading2>
+<CommonWrapper title="Felix Prünte">
+  <Section className="flex justify-between items-center">
+    <div class="grow">
+      <Heading1 className="mt-0">Felix Prünte</Heading1>
       <Paragraph>
-        I am passionate about creating products and designs that not only solve
-        problems, but look nice and are easy to use. I have collected experience
-        in various programming languages, focusing on Java, Python and
-        JavaScript. I have worked in the Real Estate Management and Cross
-        Product Integration field. I am curious about new technology and how I
-        can contribute my skills to new projects.
+        Curios and dedicated Full Stack Engineer eager to build high-quality
+        applications.
       </Paragraph>
-    </Section>
-    <Section>
-      <Heading2>Work Experience</Heading2>
-      <div class="flex flex-col">
-        <WorkExperience
-          title="SAP"
-          role="Software Developer"
-          start="November 2022"
-          end="today"
-        />
-        <WorkExperience
-          title="SAP"
-          role="Working Student S/4 HANA LoB Real Estate"
-          start="December 2021"
-          end="September 2022"
-        />
-        <WorkExperience
-          title="XU Exponential University"
-          role="Working Student Coding & Development"
-          start="February 2020"
-          end="September 2021"
-        />
-      </div>
-    </Section>
-    <Section>
-      <Heading2>Education</Heading2>
-      <Education
-        title="XU Exponential University"
-        degree="B.Sc. Coding & Software Engineering"
-        grade="1.3"
+      <ul class="print:hidden flex gap-2 mt-4">
+        <li>
+          <Link
+            class="italic underline"
+            href="https://www.linkedin.com/in/felix-pruente/">LinkedIn</Link
+          >
+        </li>
+        <li>
+          <Link class="italic underline" href="https://github.com/failllix/"
+            >GitHub</Link
+          >
+        </li>
+        <li>
+          <Link class="italic underline" href="mailto:info@felix-pruente.de"
+            >Email</Link
+          >
+        </li>
+      </ul>
+      <ul class="print:block hidden mt-4">
+        <li>
+          <a href="https://www.linkedin.com/in/felix-pruente/"
+            >LinkedIn · Felix Prünte</a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/failllix/">GitHub · failllix</a>
+        </li>
+        <li>
+          <a href="mailto:info@felix-pruente.de"
+            >Email · info@felix-pruente.de</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="ml-4 basis-48 shrink min-w-32">
+      <Image
+        src={profileImage}
+        alt="Felix Prünte profile image"
+        class="object-cover rounded-lg"
       />
-    </Section>
-    <Section>
-      <Heading2>Skills & Certifications</Heading2>
-      <ul class="flex gap-4 flex-wrap">
-        <Skill>Node.js</Skill>
-        <Skill>Java</Skill>
-        <Skill>Python</Skill>
-        <Skill>React.js</Skill>
-        <Skill>SAP UI5</Skill>
-        <Skill>SAP Cloud Application Programming Model</Skill>
-      </ul>
-      <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
-        {
-          allCertifications.map(({ data }) => {
-            return (
-              <Certification
-                name={data.name}
-                link={data.link}
-                icon={data.icon}
-              />
-            );
-          })
-        }
-      </ul>
-    </Section>
-    <Section className="print:hidden">
-      <Heading2>Projects</Heading2>
-      <ul class="grid md:grid-cols-2 gap-4">
-        {
-          allProjects.map((project) => {
-            return (
-              <ProjectCard projectData={project.data} slug={project.slug} />
-            );
-          })
-        }
-      </ul>
-    </Section>
-  </body>
-</html>
+    </div>
+  </Section>
+  <Section>
+    <Heading2>About</Heading2>
+    <Paragraph>
+      I am passionate about creating products and designs that not only solve
+      problems, but look nice and are easy to use. I have collected experience
+      in various programming languages, focusing on Java, Python and JavaScript.
+      I have worked in the Real Estate Management and Cross Product Integration
+      field. I am curious about new technology and how I can contribute my
+      skills to new projects.
+    </Paragraph>
+  </Section>
+  <Section>
+    <Heading2>Work Experience</Heading2>
+    <div class="flex flex-col">
+      <WorkExperience
+        title="SAP"
+        role="Software Developer"
+        start="November 2022"
+        end="today"
+      />
+      <WorkExperience
+        title="SAP"
+        role="Working Student S/4 HANA LoB Real Estate"
+        start="December 2021"
+        end="September 2022"
+      />
+      <WorkExperience
+        title="XU Exponential University"
+        role="Working Student Coding & Development"
+        start="February 2020"
+        end="September 2021"
+      />
+    </div>
+  </Section>
+  <Section>
+    <Heading2>Education</Heading2>
+    <Education
+      title="XU Exponential University"
+      degree="B.Sc. Coding & Software Engineering"
+      grade="1.3"
+    />
+  </Section>
+  <Section>
+    <Heading2>Skills & Certifications</Heading2>
+    <ul class="flex gap-4 flex-wrap">
+      <Skill>Node.js</Skill>
+      <Skill>Java</Skill>
+      <Skill>Python</Skill>
+      <Skill>React.js</Skill>
+      <Skill>SAP UI5</Skill>
+      <Skill>SAP Cloud Application Programming Model</Skill>
+    </ul>
+    <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
+      {
+        allCertifications.map(({ data }) => {
+          return (
+            <Certification name={data.name} link={data.link} icon={data.icon} />
+          );
+        })
+      }
+    </ul>
+  </Section>
+  <Section className="print:hidden">
+    <Heading2>Projects</Heading2>
+    <ul class="grid md:grid-cols-2 gap-4">
+      {
+        allProjects.map((project) => {
+          return <ProjectCard projectData={project.data} slug={project.slug} />;
+        })
+      }
+    </ul>
+  </Section>
+</CommonWrapper>

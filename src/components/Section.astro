@@ -4,4 +4,12 @@ const { className } = Astro.props;
 import { twMerge } from "tailwind-merge";
 ---
 
+<style>
+  @media print {
+    section {
+      page-break-inside: avoid;
+    }
+  }
+</style>
+
 <section class={twMerge("mt-8", className)}><slot /></section>

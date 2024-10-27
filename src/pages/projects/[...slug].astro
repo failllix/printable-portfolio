@@ -1,4 +1,5 @@
 ---
+import CommonWrapper from "../../layouts/CommonWrapper.astro";
 import Paragraph from "../../components/Paragraph.astro";
 import BulletList from "../../components/BulletList.astro";
 import Link from "../../components/Link.astro";
@@ -20,25 +21,16 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <title>{entry.data.title}</title>
-  </head>
-  <body class="max-w-[1000px] mx-auto px-4 mb-8">
-    <a class="block mt-8" href="/">← Back</a>
-    <Content
-      components={{
-        h1: Heading1,
-        h2: Heading2,
-        h3: Heading3,
-        a: Link,
-        p: Paragraph,
-        ul: BulletList,
-      }}
-    />
-  </body>
-</html>
+<CommonWrapper title={`Felix Prünte | ${entry.data.title}`}>
+  <a class="print:hidden block mt-8" href="/">← Back</a>
+  <Content
+    components={{
+      h1: Heading1,
+      h2: Heading2,
+      h3: Heading3,
+      a: Link,
+      p: Paragraph,
+      ul: BulletList,
+    }}
+  />
+</CommonWrapper>
