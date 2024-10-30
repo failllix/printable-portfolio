@@ -1,0 +1,18 @@
+---
+import { twMerge } from "tailwind-merge";
+import Link from "./Link.astro";
+import Paragraph from "./Paragraph.astro";
+
+
+const {className, coCreators,  } = Astro.props;
+---
+<Paragraph
+      className={twMerge(coCreators.length == 0 ? "hidden" : "", className)}
+    >
+     🙌 Co-Creators: {
+        coCreators.map((coCreator) => (
+            <Link href={coCreator.link}>{coCreator.name}</Link>
+            <span class="last:hidden"> | </span>
+        ))
+      }
+</Paragraph>

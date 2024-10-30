@@ -6,6 +6,7 @@ import Link from "../../components/Link.astro";
 import Heading1 from "../../components/Heading1.astro";
 import Heading2 from "../../components/Heading2.astro";
 import Heading3 from "../../components/Heading3.astro";
+import CoCreators from "../../components/CoCreators.astro";
 
 import { getCollection } from "astro:content";
 
@@ -18,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { excerpt } = entry.data;
+const { title, excerpt, year, coCreators, gitHubLink } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -26,7 +27,20 @@ const { Content } = await entry.render();
   title={`Felix Prünte | ${entry.data.title}`}
   description={excerpt}
 >
-  <a class="print:hidden block mt-8" href="/">← Back</a>
+  <Heading1>{title}</Heading1>
+  <hr class="my-4" />
+  <div>
+    <Paragraph>Year: {year}</Paragraph>
+    <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
+    <Link
+      className={`flex items-center ${gitHubLink == undefined ? "hidden" : ""}`}
+      href={gitHubLink}
+    >
+      <img class="w-4 h-4 mr-2" src="/github-mark.svg" />
+      GitHub
+    </Link>
+  </div>
+  <hr class="mt-4 mb-10" />
   <Content
     components={{
       h1: Heading1,

@@ -1,5 +1,7 @@
 ---
-const { href } = Astro.props;
+import { twMerge } from "tailwind-merge";
+
+const { className, href } = Astro.props;
 ---
 
-<a class="underline italic" href={href}><slot /></a>
+<a class={twMerge("underline italic", className)} href={href}><slot /></a>

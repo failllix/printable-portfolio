@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
+import CoCreators from "./CoCreators.astro";
 import Paragraph from "./Paragraph.astro";
-import Link from "./Link.astro";
 import Heading3 from "./Heading3.astro";
 import Skill from "./Skill.astro";
 
@@ -22,22 +22,15 @@ if (!images[imagePath])
 
 <li>
   <article class="relative isolate bg-gray-100 px-6 pt-4 pb-6 rounded-md">
-    <a class="absolute top-0 left-0 h-full w-full z-10" href={`/projects/${slug}`} aria-label={title}
-    ></a>
+    <a
+      class="absolute top-0 left-0 h-full w-full z-10"
+      href={`/projects/${slug}`}
+      aria-label={title}></a>
     <Heading3>
       {title}
     </Heading3>
     <Paragraph className="italic">{year}</Paragraph>
-    <Paragraph
-      className={`mt-2 z-20 relative ${coCreators.length == 0 ? "hidden" : ""}`}
-    >
-      <span>🙌 Co-Creators: </span>{
-        coCreators.map((coCreator) => (
-            <Link href={coCreator.link}>{coCreator.name}</Link>
-            <span class="last:hidden"> | </span>
-        ))
-      }
-    </Paragraph>
+    <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
     <ul class="flex flex-row gap-2 flex-wrap">
       {skills.map((skill) => <Skill>{skill}</Skill>)}
     </ul>
