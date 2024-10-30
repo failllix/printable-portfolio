@@ -18,10 +18,14 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const { excerpt } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<CommonWrapper title={`Felix Prünte | ${entry.data.title}`}>
+<CommonWrapper
+  title={`Felix Prünte | ${entry.data.title}`}
+  description={excerpt}
+>
   <a class="print:hidden block mt-8" href="/">← Back</a>
   <Content
     components={{
