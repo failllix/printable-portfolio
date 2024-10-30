@@ -20,31 +20,33 @@ if (!images[imagePath])
   );
 ---
 
-<article class="relative isolate bg-gray-100 px-6 pt-4 pb-6 rounded-md">
-  <a class="absolute top-0 left-0 h-full w-full z-10" href={`/projects/${slug}`} aria-label={title}
-  ></a>
-  <Heading3>
-    {title}
-  </Heading3>
-  <Paragraph className="italic">{year}</Paragraph>
-  <Paragraph
-    className={`mt-2 z-20 relative ${coCreators.length == 0 ? "hidden" : ""}`}
-  >
-    <span>🙌 Co-Creators: </span>{
-      coCreators.map((coCreator) => (
-          <Link href={coCreator.link}>{coCreator.name}</Link>
-          <span class="last:hidden"> | </span>
-      ))
-    }
-  </Paragraph>
-  <ul class="flex flex-row gap-2 flex-wrap">
-    {skills.map((skill) => <Skill>{skill}</Skill>)}
-  </ul>
-  <Paragraph>{excerpt}</Paragraph>
-  <Image
-    class="max-h-72 object-contain mt-4"
-    alt={coverAlt}
-    src={images[imagePath]()}
-    densities={[0.4, 0.8, 1, 1.5]}
-  />
-</article>
+<li>
+  <article class="relative isolate bg-gray-100 px-6 pt-4 pb-6 rounded-md">
+    <a class="absolute top-0 left-0 h-full w-full z-10" href={`/projects/${slug}`} aria-label={title}
+    ></a>
+    <Heading3>
+      {title}
+    </Heading3>
+    <Paragraph className="italic">{year}</Paragraph>
+    <Paragraph
+      className={`mt-2 z-20 relative ${coCreators.length == 0 ? "hidden" : ""}`}
+    >
+      <span>🙌 Co-Creators: </span>{
+        coCreators.map((coCreator) => (
+            <Link href={coCreator.link}>{coCreator.name}</Link>
+            <span class="last:hidden"> | </span>
+        ))
+      }
+    </Paragraph>
+    <ul class="flex flex-row gap-2 flex-wrap">
+      {skills.map((skill) => <Skill>{skill}</Skill>)}
+    </ul>
+    <Paragraph>{excerpt}</Paragraph>
+    <Image
+      class="max-h-72 object-contain mt-4"
+      alt={coverAlt}
+      src={images[imagePath]()}
+      densities={[0.4, 0.8, 1, 1.5]}
+    />
+  </article>
+</li>
