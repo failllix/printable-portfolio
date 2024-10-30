@@ -20,7 +20,7 @@ const projectsCollection = defineCollection({
 });
 
 const certificationsCollection = defineCollection({
-  type: "content",
+  type: "data",
   schema: z.object({
     name: z.string(),
     link: z.string(),
