@@ -1,4 +1,6 @@
 ---
+import "@fontsource/atkinson-hyperlegible";
+
 import PrintHint from "../components/PrintHint.astro";
 
 const { title } = Astro.props;
@@ -10,6 +12,11 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <style>
+      body {
+        font-family: "Atkinson Hyperlegible", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div class="px-4 pb-8 max-w-[1000px] mx-auto">
