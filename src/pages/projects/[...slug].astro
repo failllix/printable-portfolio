@@ -1,6 +1,7 @@
 ---
 import CommonWrapper from "../../layouts/CommonWrapper.astro";
 import Paragraph from "../../components/Paragraph.astro";
+import BlockQuote from "../../components/BlockQuote.astro";
 import BulletList from "../../components/BulletList.astro";
 import OrderedList from "../../components/OrderedList.astro";
 import Link from "../../components/Link.astro";
@@ -38,7 +39,7 @@ const { Content } = await entry.render();
       href={gitHubLink}
     >
       <img class="w-4 h-4 mr-2" src="/github-mark.svg" />
-      GitHub
+      "{title}" on GitHub
     </Link>
   </div>
   <hr class="mt-4 mb-10" />
@@ -51,6 +52,7 @@ const { Content } = await entry.render();
       p: Paragraph,
       ul: BulletList,
       ol: OrderedList,
+      blockquote: BlockQuote,
     }}
   />
 </CommonWrapper>
