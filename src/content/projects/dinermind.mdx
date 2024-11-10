@@ -15,45 +15,70 @@ coCreators:
       link: "https://www.linkedin.com/in/dariakowalska/",
     },
   ]
-excerpt: The app Dinermind was created during our studies in the Module "App Development" and focuses on giving the user suggestions about what to have for diner. The idea originated from us three finding ourselves going through the same dishes over and over. The user will be notified after leaving a set place (e.g. work, school) and can choose from a couple of recipes and easily create a shopping list for the stop at the grocery store on the way home.
+excerpt: The app Dinermind was created during our studies in the Module "App Development" and focuses on providing recipe suggestions after leaving a geo-fence (e.g. on the way home after work).
 ---
 
 ## Planning and Ideation
 
-### Basic conditions
+### Basic Conditions
 
-As this project was created during my app development course we were given some requirements by our lecturer to ensure a learning progress and use of certain features. We chose to meet the following:
+Because this project was created during our app development course, our lecturer set a couple of requirements.
+We were allowed to select five and decided to incorporate the following in our project:
 
-- API implementation
-- Master-Detail views
-- User preferences
-- Data persistency
-- Geo services
+1. API
+1. Master-Detail view
+1. User preferences
+1. Data persistency
+1. Geo services
 
-### Finding an idea
+### Finding an Idea
 
-As my other studies evolve around topics like agile project planning and implementation. We chose to use the design thinking method to come up with a feasible idea. As a team we agreed to go into the field of food, cooking and taste, because all of us enjoy nice meals.
+We chose to use the design thinking method to come up with a feasible idea.
+Design thinking was introduced to us during another lecture around the topic of "Agile Planning and Implementation".
+We felt this project is a good candidate to apply the method.
+As a team we agreed to look into the field of "food, cooking and taste", because all of us are passionate about this topic.
 
-After some time we recognized that we share a common problem of eating the same boring meals over and over again during the week due to a lack of inspiration and time pressure after a long day of work or studying. After refining our idea further, we settled on developing an app that would suggest up to five random recipes triggered by leaving a predefined geo fence to help inspire anybody in time trouble to cook healthy and diverse dinners.
+After an initial brainstorming, we recognized that a shared problem is eating similar meals over and over again due to lack of inspiration and time after a long day.
+After further iteration, we settled on developing an app that would suggest up to five random recipes triggered by leaving a predefined geo fence (e.g. university or office).
+Users should be notified after leaving a the place to choose from a refined list of recipes and easily create a shopping list to pick up the required ingredients on their way home.
 
 ## Prototyping
 
-As soon as we came up with a concrete idea, we jumped into Adobe XD for prototyping. We tested various designs and added features like a favorite list and a shopping list to simplify buying groceries on your way home if you decided to cook one of the suggested meals.
+As soon as we finalized our ideation, we began prototyping in Adobe XD.
+We tested various designs and feature combinations.
+Our final set of features included:
 
-![Mockups of the dinermind app.](../../images/projects/dinermind_prototype_showcase.png)
+- Recipe suggestions / discovery
+- Favorites list
+- Shopping list to simplify grocery shopping
+- User preferences (e.g. dietary preferences)
+
+![Selected mockups of the Dinermind application](../../images/projects/dinermind_prototype_showcase.png)
 
 ## Technology
 
-We used Android's Model, View, View-Model approach to handle and display our data. This had several benefits, because view models have their own lifecycles and can persist states like form inputs eventhough the lifecycle of the view changes due to a rotation of the device for example. To load recipes we used the API from spoonacular and stored received recipe data on the data to save network bandwith and improve performance as recipes would only be updated once a day.
+As a data source for fetching the recipes we decided to use [Spoonacular](https://spoonacular.com/food-api).
+The API provides a rich collection of different recipes, which can be filtered by dietary restrictions and include detailed ingredient lists.
+Because recipes would only be updated once a day, we cached received recipe data to save network bandwith and improve performance.
+For local storage we opted to use the [Android "Room" convenience layer](https://developer.android.com/training/data-storage/room), which is built around SQLite and tied nicely into the remaining architecture of the application.
 
-Further, we build our navigation using the Android X navigation components, like the navigation graph and its transitions in combination with motion layout. Overall this was a great experience and simplified building a nice UX with good looking transitions.
+We used Android's Model, View, View-Mdel approach to handle and display our data.
+One of the main benefits was that view models have their own lifecycle and can persist state.
+An example for this is keeping current user input in form elements even when the view's lifecycle updates, for example, due to a rotation of the device.
 
-For local storage we opted to use Room, which tied nicely into our view models for data handling.
+Further, we build our navigation using the Android X navigation components.
+Including the navigation graph, transitions and motion layout.
+We enjoyed using those concepts, because it heavily simplified building a nice User Interface with good looking transitions.
 
-## Team organization
+## Team Organization
 
-We used Scrum to facilitate our collaboration. Choosing a sprint length of one week with standups every other day and review at the end of every week turned out to be good fit for our team and project. We also managed to mostly stick to this schedule and worked regularly on developing the app.
+We used reduced Scrum process to facilitate our collaboration.
+Choosing a sprint length of one week with standups every other day and a joint review at the end of every week turned out to be good fit for our team and the project.
+The regular sync meetings allowed us to coordinate our work efficiently and help each other when encountering problems.
+The joint review helped us in appreciating our progress.
 
 ## Conclusions
 
-All of us were very satisfied with the result we could achieve (which also ended in a very good grade 😉). Furthermore, all of us learned a lot about app development in Android. Not only on the technical side, but also what it means to properly collaborate on a codebase, to implement a good architecture and use mutual reviews to assure the quality of our code.
+All of us were very satisfied with what we created (not just because it resulted in a very good grade 🥳).
+We learned a lot about app development in Android and thoroughly enjoyed the process of taking an idea to concrete implementation.
+While overcoming technical hurdles, we also learned what it means to properly collaborate on a codebase, to implement good architecture and use mutual reviews to assure code quality.

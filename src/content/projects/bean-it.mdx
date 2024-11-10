@@ -5,49 +5,79 @@ skills: ["Android", "Design"]
 coverImagePath: bean_it.png
 coverAlt: Phone running "Bean it" app and "Bean it" logo
 coCreators: []
-excerpt: I developed this app with the purpose to track and measure my coffee brewing recipes.
+excerpt: I developed this app to track and measure my coffee brewing recipes.
 gitHubLink: https://github.com/failllix/espresso-tracker
 ---
 
-## The idea
+## The Idea
 
-Because so many variables go into making an enjoyable espresso shot, I weigh out my beans, the yield of espresso and I take the time of the shots. Later you make adjustments based on taste and metrics like the time it took the espresso to run through the ground beans to improve the taste of the espresso. Being a developer I love looking at stats and data. Therefore I looked into solutions of digitally collecting those information. Soon I stumbled over the [Acaia Lunar Scale](https://acaia.co/products/lunar) which tracks all the information and presents it nicely in a app. But looking at the price, I thought "I could do that".
+Many variables go into making an enjoyable espresso shot:
 
-## First sketches
+- Grinder setting (coarseness)
+- Coffee weight (in)
+- Water temperature
+- Extraction time
+- Espresso weight (out)
+- ...
 
-As with every idea, I jumped into my prototyping tool of choice (Adobe XD) and started making some sketches for the structure and design of the app. I went with a very simple tabbed layout and very few functions at the beginning (measure and log overview).
+Based on taste, one makes adjustments to some of the variables above.
+Mainly the grinder settings and brew ratio.
+I love looking at stats and data to take data-driven decisions.
+Therefore I looked into solutions of collecting those information digitally.
+Soon I stumbled over the [Acaia Lunar Scale](https://acaia.co/products/lunar_2021) which tracks all the information and presents it nicely in a mobile app.
+After looking at the price of the scale, a new project with the "I can do that myself" dogma was born.
+
+## First Sketches
+
+I jumped into my prototyping tool of choice during the time: Adobe XD and started creating first sketches for the structure and design of the app.
+I went with a very simple tabbed layout and limited functionality for the beginning:
+
+1. Page for taking a new measurement
+1. Overview of recent measurements
+1. Settings
 
 ![Mockups of the bean it app.](../../images/projects/bean_it_mockups.png)
 
 ## Development
 
-I chose to develop this app in Android as I did'nt program any app in a long time and it was a good fit for a small weekend project. Also, later it payed off, as accessing device sensors is way easier in a native app than in a web app.
+I chose to develop this app in Android as I did not program an app for quite some time.
+I saw this project as a good candidate to familiarize myself further with the new Android X libraries.
 
-For the structure of the app, I opted for a single activity with multiple fragments that are controlled by a ViewPager. The data is stored using the Room-model of Android. Further, i am using the MVVM (**M**odel, **V**iew, **V**iew-**M**odel) approach to present and update the underlying data. During development this made it very easy to adapt and add new features. Overall i enjoyed using Room and the MVVM approach eventhough it takes some time getting used to it.
+For the structure of the app, I opted for a single activity with multiple fragments that are controlled by a `ViewPager`.
+Using the MVVM (**M**odel, **V**iew, **V**iew-**M**odel) approach to present and update the underlying data made it very easy to adapt and add new features.
+The data is stored using [Android's Room model](https://developer.android.com/training/data-storage/room), because no remote data storage was necessary for the initial scope.
+Overall I enjoyed using the new libariries and felt that they took away some of the pain I had in mind from developing Android apps previously.
 
-## Fancy features
+## Re-Iterating
 
-After some first usages of the app in my daily coffee routine, I recognized that it is a huge hustle of doing all the steps to brew a coffee and simultanously enter weights and start and stop a timer. After looking into building my own remote scale (like the Lunar) with an Arduino, I quickly discarded this idea.
-After thinking some more I came across the idea to use the microphones of the phone to recognize when the pump of the espresso machine is running and when it is not, to automatically start and stop the timer. However this turned out to be rather complex and not very consistent if people are talking in the room at the same time.
+After using the app for some time in my daily coffee routine, I felt that doing all the steps to brew a coffee and simultanously entering weights and starting / stopping a timer is inconvenient.
+I began looking into building my own remote scale (like the Lunar) with an Arduino, however quickly discarded this idea.
+Exploring futher options, I came across the idea to use the phone's microphone to recognize when the pump of the espresso machine is running to automatically start / stop the timer.
+However, this turned out to be rather complex and not very consistent.
+The main problem being ambient noise.
+For exmaple, people talking, music playing, etc.
 
-My next approach was to use the gyroscope of the phone to detect vibrations of the espresso machine. This came in handy as I was laying my phone on top of the machine anyways. I spend quite some fiddling around with the equation to emphasize vibration enough over minor noise in the data to be able to set a threshold when the timer should start and when it should stop.
+My next approach was to use the phone's gyroscope sensor to detect vibrations of the espresso machine.
+This option seemed more viable, as external influences were lower compared to the noise approach and I was laying my phone on the countertop anyway to enter the remaining data.
+After fiddling around with the equation to emphasize actual vibration over random signal noise, I got this approach to work to automatically start / stop the timer based on a vibration threshold.
 
-The next problem was that flipping the lever at the beginning or bumping the kitchen counter was triggering the timer shortly and it wouldn't run again afterwards or would run to long, when the espresso machine keeps pumping water after brewing to refill the boiler. That is the reason why I ended up implementing that the timer could start and stop as often as it likes in the beginning (to account for small bumps), but wouldn't start again after it reached 15 seconds. The amount of 15 seconds is arbitrary in this case, but I figured that this is the amount you would want your extraction last at least (aiming usually for around 25 - 35 seconds).
+The next problem I encountered was that flipping the lever or bumping the kitchen counter was triggering the timer briefly and it would not run again afterwards.
+Additionally, the timer would continue running, when the espresso machine kept pumping water to refill its boiler.
+As a workaround, I implemented that the timer could start / stop arbitrarily often during the first 15 seconds to account for accidental bumps.
+This time window was chosen arbitrarily, but I figured that one usually aims for an extraction time of around 25 - 35 seconds, making 15 seconds a reasonable choice.
 
 ## Conclusions
 
-### Daily Use
+Since developing the app, I use it for nearly all my extractions as it gives a nice overview of your last settings and how the shot went.
+I also use it to keep track of my daily coffee consumption.
 
-Since I developed the app, I use it for nearly all my extractions as it gives a nice overview of your last settings and how the shot went. I also use it to keep track of my daily coffee consumption.
-
-### Possible extension
-
-Features I'd like to work on in the future are:
+Features I would like to work on in the future are:
 
 1. Implement tasting metrics after pulling the shot to rate the recipe
 1. More data analysis (Average consumption, cleaning reminders, etc.)
-1. Saving of recipes and used beans to quickly pull up good settings from the past
+1. Saving recipes for certain beans
 1. Automatic recommendations for grinder adjustments (based on tasting metrics).
-1. Remote storage for access from other devices / services (e.g. Home Assistant integration for cleaning reminders)
+1. Remote storage for access from other devices / services (for exmaple, integrating with Home Assistant)
 
-If you like the project and you are a coffee lover yourself, you can find all the code on GitHub. I am open for any questions anytime, just hit me up ☕.
+If you like the project and you are a coffee lover yourself, you can find all the [code on GitHub](https://github.com/failllix/espresso-tracker).
+I am open for questions anytime, feel free to reach out ☕.
