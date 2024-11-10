@@ -2,6 +2,7 @@
 import CommonWrapper from "../../layouts/CommonWrapper.astro";
 import Paragraph from "../../components/Paragraph.astro";
 import BlockQuote from "../../components/BlockQuote.astro";
+import Code from "../../components/Code.astro";
 import BulletList from "../../components/BulletList.astro";
 import OrderedList from "../../components/OrderedList.astro";
 import Link from "../../components/Link.astro";
@@ -53,6 +54,7 @@ const { Content } = await entry.render();
       ul: BulletList,
       ol: OrderedList,
       blockquote: BlockQuote,
+      code: Code,
     }}
   />
 </CommonWrapper>
