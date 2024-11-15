@@ -6,7 +6,7 @@ import PrintHint from "../components/PrintHint.astro";
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -19,8 +19,8 @@ const { title, description } = Astro.props;
       }
     </style>
   </head>
-  <body>
-    <div class="px-4 pb-8 max-w-[1000px] mx-auto">
+  <body class="overflow-x-hidden flex flex-col h-full">
+    <div class="px-4 pb-8 max-w-[1000px] mx-auto flex-1">
       <slot />
     </div>
     <PrintHint />
