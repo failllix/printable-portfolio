@@ -16,7 +16,10 @@ import profileImage from "../images/profile.jpg";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
-const allProjects = await getCollection("projects");
+const allProjectsCollection = await getCollection("projects");
+const allProjects = allProjectsCollection.sort(
+  (a, b) => b.data.year - a.data.year
+);
 const allCertificationsCollection = await getCollection("certifications");
 const allCertifications = allCertificationsCollection.sort(
   (a, b) =>
