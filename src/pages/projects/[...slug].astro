@@ -10,6 +10,7 @@ import Heading1 from "../../components/Heading1.astro";
 import Heading2 from "../../components/Heading2.astro";
 import Heading3 from "../../components/Heading3.astro";
 import CoCreators from "../../components/CoCreators.astro";
+import WorkInProgressBadge from "../../components/WorkInProgressBadge.astro";
 
 import { getCollection } from "astro:content";
 
@@ -22,7 +23,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, excerpt, year, coCreators, gitHubLink } = entry.data;
+const { title, excerpt, year, coCreators, gitHubLink, isWorkInProgress } =
+  entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -33,6 +35,13 @@ const { Content } = await entry.render();
   <Heading1>{title}</Heading1>
   <hr class="my-4" />
   <div>
+    {
+      isWorkInProgress && (
+        <div class="mt-2">
+          <WorkInProgressBadge />
+        </div>
+      )
+    }
     <Paragraph>Year: {year}</Paragraph>
     <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
     <Link
