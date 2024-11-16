@@ -7,7 +7,7 @@ import Paragraph from "./Paragraph.astro";
 const {className, coCreators,  } = Astro.props;
 ---
 <Paragraph
-      className={twMerge(coCreators.length == 0 ? "hidden" : "", className)}
+      className={twMerge(className, coCreators.length == 0 ? "hidden" : "")}
     >
      🙌 Co-Creators: {
         coCreators.map((coCreator) => (

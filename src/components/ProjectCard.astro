@@ -48,7 +48,10 @@ if (!images[imagePath])
       {title}
     </Heading3>
     <Paragraph className="italic">{year}</Paragraph>
-    <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
+    <CoCreators
+      className="inline-block mt-2 z-20 relative"
+      coCreators={coCreators}
+    />
     <ul class="flex flex-row gap-2 flex-wrap">
       {skills.map((skill) => <Skill>{skill}</Skill>)}
     </ul>
