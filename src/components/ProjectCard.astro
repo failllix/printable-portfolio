@@ -1,13 +1,22 @@
 ---
 import type { ImageMetadata } from "astro";
 import CoCreators from "./CoCreators.astro";
+import WorkInProgressBadge from "./WorkInProgressBadge.astro";
 import Paragraph from "./Paragraph.astro";
 import Heading3 from "./Heading3.astro";
 import Skill from "./Skill.astro";
 
 const { slug, projectData } = Astro.props;
-const { title, excerpt, year, skills, coCreators, coverImagePath, coverAlt } =
-  projectData;
+const {
+  title,
+  excerpt,
+  year,
+  skills,
+  coCreators,
+  coverImagePath,
+  coverAlt,
+  isWorkInProgress,
+} = projectData;
 
 import { Image } from "astro:assets";
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -26,6 +35,13 @@ if (!images[imagePath])
       class="absolute top-0 left-0 h-full w-full z-10"
       href={`/projects/${slug}`}
       aria-label={title}></a>
+    {
+      isWorkInProgress && (
+        <div class="mt-2">
+          <WorkInProgressBadge />
+        </div>
+      )
+    }
     <Heading3>
       {title}
     </Heading3>

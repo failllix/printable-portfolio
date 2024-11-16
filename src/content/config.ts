@@ -16,6 +16,7 @@ const projectsCollection = defineCollection({
     coCreators: z.array(nameLink),
     excerpt: z.string(),
     gitHubLink: z.string().optional(),
+    isWorkInProgress: z.boolean().optional(),
   }),
 });
 
