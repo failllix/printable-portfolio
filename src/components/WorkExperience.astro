@@ -6,7 +6,7 @@ const { title, role, start, end } = Astro.props;
 ---
 
 <div>
-  <div class="sm:flex-row flex flex-col sm:items-center">
+  <div class="sm:flex-row flex flex-col sm:items-center mt-1 mb-1">
     <Heading3 className="mt-0 mb-0">
       {title}
     </Heading3>
@@ -18,4 +18,5 @@ const { title, role, start, end } = Astro.props;
   <Paragraph className="my-0">
     {role}
   </Paragraph>
+  <slot />
 </div>
