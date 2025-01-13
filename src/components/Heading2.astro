@@ -1,5 +1,7 @@
 ---
+import { twMerge } from "tailwind-merge";
 
+const { className } = Astro.props;
 ---
 
-<h2 class="text-2xl font-bold mb-2 mt-3"><slot /></h2>
+<h2 class={twMerge("text-2xl font-bold mb-2 mt-3", className)}><slot /></h2>
