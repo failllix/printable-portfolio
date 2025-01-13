@@ -4,6 +4,6 @@ import { twMerge } from "tailwind-merge";
 const { className } = Astro.props;
 ---
 
-<ol class={twMerge("my-3 list-decimal list-inside", className)}>
+<ol class={twMerge("my-3 list-decimal pl-6", className)}>
   <slot />
 </ol>
