@@ -10,6 +10,7 @@ import Section from "../components/Section.astro";
 import Skill from "../components/Skill.astro";
 import Certification from "../components/Certification.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import BulletList from "../components/BulletList.astro";
 
 import profileImage from "../images/profile.jpg";
 
@@ -39,7 +40,7 @@ const allCertifications = allCertificationsCollection.sort(
         Curios and dedicated Full Stack Engineer eager to build high-quality
         applications.
       </Paragraph>
-      <Paragraph> 📍 Based in Potsdam </Paragraph>
+      <Paragraph> 📍 Based in Potsdam, Germany</Paragraph>
       <ul class="print:hidden flex gap-2 mt-4">
         <li>
           <Link
@@ -86,43 +87,72 @@ const allCertifications = allCertificationsCollection.sort(
     </div>
   </Section>
   <Section>
-    <Heading2>About</Heading2>
+    <Heading2>Summary</Heading2>
     <Paragraph>
-      I am passionate about creating products and designs that not only solve
-      problems, but look nice and are easy to use. I have collected experience
-      in various programming languages, focusing on Java, Python and JavaScript.
-      I have worked in the Real Estate Management and Cross Product Integration
-      field. I am curious about new technology and how I can contribute my
-      skills to new projects.
+      I am passionate about creating products that solve problems, look great,
+      and are easy to use. Skilled in JavaScript, Python, and Java, I have
+      worked in the Real Estate Management and Cross Product Integration field.
+      I am keen to explore technologies and leverage my skills in new projects.
     </Paragraph>
   </Section>
-  <Section>
+  <Section class="flex flex-col">
     <Heading2>Work Experience</Heading2>
-    <div class="flex flex-col">
-      <WorkExperience
-        title="SAP"
-        role="Software Developer"
-        start="November 2022"
-        end="today"
-      />
-      <WorkExperience
-        title="SAP"
-        role="Working Student S/4 HANA LoB Real Estate"
-        start="December 2021"
-        end="September 2022"
-      />
-      <WorkExperience
-        title="XU Exponential University"
-        role="Working Student Coding & Development"
-        start="February 2020"
-        end="September 2021"
-      />
-    </div>
+    <WorkExperience
+      title="SAP"
+      role="Software Developer"
+      start="November 2022"
+      end="today"
+    >
+      <BulletList>
+        <li>
+          Contributing to a cross-product integration project as fullstack
+          developer using SAP's recommended technology stack
+        </li>
+        <li>
+          Managing regular retrospectives, stand ups, and refinements as
+          interims Scrum Master
+        </li>
+      </BulletList>
+    </WorkExperience>
+    <WorkExperience
+      title="SAP"
+      role="Working Student S/4 HANA LoB Real Estate"
+      start="December 2021"
+      end="September 2022"
+    >
+      <BulletList>
+        <li>
+          Contributed to the developmment of Real Estate Management solutions
+          leveraging ABAP, SAP UI5, and SAP Fiori Elements
+        </li>
+        <li>
+          Created and evaluated prototypes as part of technical feasibility
+          analysis
+        </li>
+      </BulletList>
+    </WorkExperience>
+    <WorkExperience
+      title="XU Exponential University of Applied Sciences"
+      role="Working Student Coding & Development"
+      start="February 2020"
+      end="September 2021"
+    >
+      <BulletList>
+        <li>
+          Administered the company WordPress site and enhanced it by developing
+          custom components
+        </li>
+        <li>
+          Contributed to successful CRM implementation by establishing
+          automation workflows and training team members
+        </li>
+      </BulletList>
+    </WorkExperience>
   </Section>
   <Section>
     <Heading2>Education</Heading2>
     <Education
-      title="XU Exponential University"
+      title="XU Exponential University of Applied Sciences"
       degree="B.Sc. Coding & Software Engineering"
       grade="1.3"
     />
@@ -137,7 +167,7 @@ const allCertifications = allCertificationsCollection.sort(
       <Skill>SAP UI5</Skill>
       <Skill>SAP CAP</Skill>
     </ul>
-    <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
+    <ul class="mt-6 grid gap-x-2 sm:grid-cols-2 lg:grid-cols-3">
       {
         allCertifications.map(({ data }) => {
           return (
