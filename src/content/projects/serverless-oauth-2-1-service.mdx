@@ -1,0 +1,148 @@
+---
+title: Serverless OAuth 2.1 Service
+year: 2023
+skills: ["JavaScript", "OAuth"]
+coverImagePath: serverless-oauth-2-1-server.png
+coverAlt: Dummy application showing token details obtained from OAuth service
+coCreators: []
+excerpt: After consuming several services via OAuth, I was intrigued to implement my own authorization server.
+gitHubLink: https://github.com/failllix/serverless-oauth-2-1-service
+---
+
+> ⛔ **Important note:** This project is _**not**_ intended to be used in a productive manner.
+> It was built for educational purposes and likely contains critical security oversights.
+> It is _**not**_ meant to protect any kind of service nor data.
+
+## Motivation
+
+Having used numerous OAuth-protected APIs myself, I became interested in the underlying mechanics and decided the best way to truly understand it was to build my own implementation.
+However, diving into the original OAuth 2.0 specification revealed a complex landscape familiar to many developers: numerous grant types, implementation variations, and potential security pitfalls.
+During this exploration, I encountered the emerging OAuth 2.1 specification.
+
+It deprecates less secure flows and promotes a more streamlined, secure approach.
+This sparked my interest and I decided to use the [ongoing RFC](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-12) as guidance for my implementation.
+You can find a summary of key differences in [oauth.net's OAuth 2.1 article](https://oauth.net/2.1/).
+
+## Features
+
+### Authorization Code Flow
+
+This project implements a fully functional OAuth 2.1 Authorization Server.
+It exclusively supports the Authorization Code Flow with Proof Key for Code Exchange (PKCE).
+This flow is widely considered the most secure option for web and mobile applications, preventing authorization code interception attacks.
+
+The flow looks like the following:
+
+1. A third-party application (the "client") requests access to protected resources on behalf of a user.
+1. The client initiates the authorization request, redirecting the user to the authorization server.
+1. The user authenticates with the authorization server (e.g., username/password) and explicitly approves the client's requested access permissions (scopes).
+1. Upon successful authentication and approval, the user is redirected back to the client with a temporary authorization code.
+1. The client securely exchanges this authorization code (along with the PKCE code verifier) for an access token.
+
+### User Information Endpoint
+
+Empowering users means giving them visibility and control over their granted permissions.
+Once authenticated with the authorization server, users can access the `/me` endpoint.
+This endpoint provides a detailed overview of their active grants, associated access codes, and refresh tokens.
+
+<details>
+  <summary>Example response:</summary>
+  ```json
+    {
+      "accessCodes": [
+        {
+          "AccessCode": "20c7259919ba84bf447ddd51bfb6c5bebee786702df8923ae0e80a75cc1ceed3",
+          "ClientId": "664bddd3-efb2-4be2-842e-6b741c490b59",
+          "Username": "test",
+          "GrantId": "f6812806-55ab-4996-a817-cfadb11d70e0",
+          "Scope": ["access", "userInfo"],
+          "Audience": [
+            "http://localhost:8787/me",
+            "http://localhost:8789/resources"
+          ],
+          "CodeChallengeMethod": "S256",
+          "CodeChallenge": "4AzA7kLX3Ef6GOIODw4bjetEsTyu5F_lqbAPyOCOOb4",
+          "ExpiresAt": "2025-05-01 14:56:43"
+        }
+      ],
+      "grants": [
+        {
+          "GrantId": "2c1e6d77-ce40-4172-83a2-c2abc3123121",
+          "ClientId": "664bddd3-efb2-4be2-842e-6b741c490b59",
+          "Username": "test",
+          "Scope": ["userInfo"],
+          "Audience": ["http://localhost:8787/me"]
+        }
+      ],
+      "activeRefreshTokens": [
+        {
+          "RefreshTokenId": "e238ed11-3fd4-4665-91f8-40b024a213fa",
+          "ClientId": "664bddd3-efb2-4be2-842e-6b741c490b59",
+          "GrantId": "2c1e6d77-ce40-4172-83a2-c2abc3123121",
+          "Username": "test",
+          "Scope": ["userInfo"],
+          "Active": true
+        }
+      ],
+      "inactiveRefreshTokens": [
+        {
+          "RefreshTokenId": "6a41cd5e-d0d9-4c1b-b20b-f2bb4386526e",
+          "ClientId": "664bddd3-efb2-4be2-842e-6b741c490b59",
+          "GrantId": "82cede19-21fc-466d-8eb4-9005bc9735bb",
+          "Username": "test",
+          "Scope": ["access", "userInfo"],
+          "Active": false
+        }
+      ]
+    }
+  ```
+</details>
+
+Crucially, this endpoint is not just informational it provides direct control.
+Users can choose to deactivate specific refresh tokens (preventing that instance from getting new access tokens) or entire grants (blocking the client application completely) by sending corresponding `DELETE` requests.
+
+### Convenience Development Helper
+
+Because setting up clients, users, and API definitions can be tedious, the project includes several convenience helper scripts to streamline the configuration process.
+They work as simple CLIs that prompt for information and create the corresponding database records.
+This way new clients, user and APIs can be added easily.
+For more information, refer to the [configuration instructions of the project](https://github.com/failllix/serverless-oauth-2-1-service?tab=readme-ov-file#configuration).
+
+## Architecture
+
+### Serverless
+
+The authorization server's backend uses [Cloudflare Workers®](https://workers.cloudflare.com/) as serverless platform.
+I wanted to develop this application in a cloud-native serverless environment and chose Cloudflare Inc. as the infrastructure provider, because of their good documentation, ease of use and generous free tier.
+I opted to solely use standard JavaScript utilities (including the [Web Crypto APIs](https://developer.mozilla.org/de/docs/Web/API/Web_Crypto_API)) to avoid unnecessary building and bundling steps.
+
+The dummy application, which shows token details after successful authorization, and the login page are both run using [Cloudflare Pages™](https://pages.cloudflare.com/).
+
+Although the backend logic (Cloudflare Workers®) and the user-facing login page (Cloudflare Pages™) are technically decoupled, serving them from the same domain ensures a seamless user experience.
+
+### Persistence
+
+I initially started using Cloudflare Workers® KV (a key-value store) to persist access codes, tokens, client information.
+I thought that entities are not dependent and can be contained in individual buckets.
+Simple relationships were managed by storing relevant IDs, for example, linking a refresh token to a grant.
+
+However, towards the end of the project I decided to implement the [user information endpoint](#user-information-endpoint).
+This raised a new data retrieval requirement, as I now needed to be able to, for example, retrieve _all_ refresh tokens of a user.
+While user information is saved as part of the refresh token, the token itself is only retrievable by the its id.
+My initial workaround involved redundant storage (storing entities by both ID and a user-prefixed key) to enable `list` operations based on username.
+This approach quickly became cumbersome, increasing complexity during updates/deletions and relying on costly `list` operations.
+
+This challenge highlighted the limitations of a key-value store.
+Consequently, I migrated the persistence layer to [Cloudflare D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQLite database.
+D1 offers the benefits of a relational model, simplifying complex queries and relationship management, while integrating seamlessly with Cloudflare Workers®.
+
+## Possible Extensions
+
+While I consider the project done for the time being, I have the following ideas floating in mind, which could be picked up in the future:
+
+1. **Management dashboard:**
+   - An administration interface for easier onboarding of clients, users, and APIs
+   - A user-friendly dashboard leveraging the `/me` endpoint for managing grants and tokens
+1. **Additional grant types:** For example `client_credentials` for technical access
+1. **API tests:** Supplementing the existing unit tests with comprehensive E2E integration tests to validate system behavior from the outside
+1. **Resource server:** Building a sample resource server that performs access token validation and serves protected resources, completing the end-to-end OAuth flow demonstration
