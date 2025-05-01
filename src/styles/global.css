@@ -7,3 +7,9 @@ pre {
 pre > code {
 	all: unset;
 }
+details{
+	@apply cursor-pointer;
+}
+summary{
+	@apply mb-2;
+}
