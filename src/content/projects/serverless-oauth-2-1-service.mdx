@@ -9,7 +9,7 @@ excerpt: After consuming several services via OAuth, I was intrigued to implemen
 gitHubLink: https://github.com/failllix/serverless-oauth-2-1-service
 ---
 
-> ⛔ **Important note:** This project is _**not**_ intended to be used in a productive manner.
+> ⛔ **Important note:** This project is _**not**_ intended to be used in production.
 > It was built for educational purposes and likely contains critical security oversights.
 > It is _**not**_ meant to protect any kind of service nor data.
 
@@ -129,8 +129,8 @@ Simple relationships were managed by storing relevant IDs, for example, linking 
 However, towards the end of the project I decided to implement the [user information endpoint](#user-information-endpoint).
 This raised a new data retrieval requirement, as I now needed to be able to, for example, retrieve _all_ refresh tokens of a user.
 While user information is saved as part of the refresh token, the token itself is only retrievable by the its id.
-My initial workaround involved redundant storage (storing entities by both ID and a user-prefixed key) to enable `list` operations based on username.
-This approach quickly became cumbersome, increasing complexity during updates/deletions and relying on costly `list` operations.
+My initial solution involved redundant storage (storing entities by both ID and a user-prefixed key) to enable `list` operations based on username.
+However, this approach quickly became cumbersome during implementation, increasing complexity during updates/deletions, because both indices had to be managed.
 
 This challenge highlighted the limitations of a key-value store.
 Consequently, I migrated the persistence layer to [Cloudflare D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQLite database.
