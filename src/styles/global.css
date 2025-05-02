@@ -1,5 +1,5 @@
 code {
-	@apply bg-gray-200 px-2 py-0.5;
+	@apply bg-gray-300 px-1 rounded-sm;
 }
 pre {
 	@apply p-4 rounded-md break-all;
