@@ -6,11 +6,13 @@ import Paragraph from "../components/Paragraph.astro";
 import Link from "../components/Link.astro";
 import Heading1 from "../components/Heading1.astro";
 import Heading2 from "../components/Heading2.astro";
+import Heading3 from "../components/Heading3.astro";
 import Section from "../components/Section.astro";
 import Skill from "../components/Skill.astro";
 import Certification from "../components/Certification.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import BulletList from "../components/BulletList.astro";
+import PrintEntry from "../components/PrintEntry.astro";
 
 import profileImage from "../images/profile.jpg";
 
@@ -27,166 +29,194 @@ const allCertifications = allCertificationsCollection.sort(
     b.data.icon.charCodeAt(0) - a.data.icon.charCodeAt(0) ||
     ("" + a.data.name).localeCompare(b.data.name)
 );
+
+const allExperience = (await getCollection("experience")).map((x) => x.data);
+const allEducation = (await getCollection("education")).map((x) => x.data);
+const personalDetails = (await getCollection("personal")).map((x) => x.data)[0];
 ---
 
 <CommonWrapper
-  title="Felix Prünte"
-  description="Felix Prünte's resume and portfolio page"
+  title={personalDetails.name}
+  description={`${personalDetails.name}'s resume and portfolio page`}
 >
-  <Section className="flex justify-between items-center">
-    <div class="grow">
-      <Heading1 className="mt-0">Felix Prünte</Heading1>
+  <div class="print:hidden">
+    <Section className="flex justify-between items-center">
+      <div class="grow">
+        <Heading1 className="mt-0">{personalDetails.name}</Heading1>
+        <Paragraph>
+          {personalDetails.description}
+        </Paragraph>
+        <Paragraph> 📍 Based in {personalDetails.location}</Paragraph>
+        <ul class="flex gap-2 mt-4">
+          {personalDetails.links.map((link) => (
+          <li>
+            <Link class="italic underline"href={link.href}>{link.name}</Link>
+          </li>))}
+        </ul>
+      </div>
+      <div class="ml-4 basis-48 shrink min-w-32">
+        <Image
+          src={profileImage}
+          alt={`${personalDetails.name} profile`}
+          class="object-cover rounded-lg"
+          widths={[128, 192]}
+          sizes="(max-width: 550px) 128px, 192px"
+          loading="eager"
+        />
+      </div>
+    </Section>
+    <Section>
+      <Heading2>Summary</Heading2>
       <Paragraph>
-        Curios and dedicated Full Stack Engineer eager to build high-quality
-        applications.
+        {personalDetails.summary}
       </Paragraph>
-      <Paragraph> 📍 Based in Potsdam, Germany</Paragraph>
-      <ul class="print:hidden flex gap-2 mt-4">
-        <li>
-          <Link
-            class="italic underline"
-            href="https://www.linkedin.com/in/felix-pruente/">LinkedIn</Link
-          >
-        </li>
-        <li>
-          <Link class="italic underline" href="https://github.com/failllix/"
-            >GitHub</Link
-          >
-        </li>
-        <li>
-          <Link class="italic underline" href="mailto:info@felix-pruente.de"
-            >Email</Link
-          >
-        </li>
+    </Section>
+    <Section class="flex flex-col">
+      <Heading2>Work Experience</Heading2>
+      {allExperience.map(experience => (
+        <WorkExperience
+        title={experience.employer}
+        role={experience.role}
+        start={experience.from}
+        end={experience.to}
+      >
+        <BulletList>
+          {experience.bullets.map(bullet => (
+            <li>{bullet}</li>
+          ))}
+        </BulletList>
+      </WorkExperience>
+      ))}
+    </Section>
+    <Section>
+      <Heading2>Education</Heading2>
+      {allEducation.map(education => (
+        <Education
+        title={education.institution}
+        degree={education.degree}
+        grade={education.grade}
+      />
+      ))}
+    </Section>
+    <Section>
+      <Heading2>Skills & Certifications</Heading2>
+      <ul class="flex gap-4 flex-wrap">
+        {personalDetails.technicalSkills.map(skill => (<Skill>{skill}</Skill>))}
       </ul>
-      <ul class="print:block hidden mt-4">
-        <li>
-          <a href="https://www.linkedin.com/in/felix-pruente/"
-            >LinkedIn · Felix Prünte</a
-          >
-        </li>
-        <li>
-          <a href="https://github.com/failllix/">GitHub · failllix</a>
-        </li>
-        <li>
-          <a href="mailto:info@felix-pruente.de"
-            >Email · info@felix-pruente.de</a
-          >
-        </li>
+      <ul class="mt-6 grid gap-x-2 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          allCertifications.map(({ data }) => {
+            return (
+              <Certification
+                name={data.name}
+                link={data.link}
+                icon={data.icon}
+              />
+            );
+          })
+        }
       </ul>
-    </div>
-    <div class="ml-4 basis-48 shrink min-w-32">
+    </Section>
+    <Section>
+      <Heading2>Projects</Heading2>
+      <ul class="grid md:grid-cols-2 gap-4">
+        {
+          allProjects.map((project) => {
+            return (
+              <ProjectCard projectData={project.data} slug={project.slug} />
+            );
+          })
+        }
+      </ul>
+    </Section>
+  </div>
+  <div class="hidden print:block w-full">
+    <div class="mt w-20 mx-auto">
       <Image
         src={profileImage}
         alt="Felix Prünte profile"
-        class="object-cover rounded-lg"
-        widths={[128, 192]}
-        sizes="(max-width: 550px) 128px, 192px"
+        class="object-cover rounded-full"
+        widths={[128, 160, 192]}
+        sizes="(max-width: 550px) 128px, 160px, 192px"
         loading="eager"
       />
     </div>
-  </Section>
-  <Section>
-    <Heading2>Summary</Heading2>
-    <Paragraph>
-      I am passionate about creating products that solve problems, look great,
-      and are easy to use. Skilled in JavaScript, Python, and Java, I have
-      worked in the Real Estate Management, Cross Product Integration, and
-      Business AI field. I am keen to explore technologies and leverage my
-      skills in new projects.
-    </Paragraph>
-  </Section>
-  <Section class="flex flex-col">
-    <Heading2>Work Experience</Heading2>
-    <WorkExperience
-      title="SAP"
-      role="Software Developer"
-      start="November 2022"
-      end="today"
+    <Heading1 className="font-bold text-xl text-center my-0 mt-2"
+      >{personalDetails.name.toUpperCase()}</Heading1
     >
-      <BulletList>
-        <li>Contributing to SAP's AI platform as fullstack developer</li>
-        <li>
-          Managing regular retrospectives, stand ups, and refinements as
-          interims Scrum Master
-        </li>
-        <li>
-          Contributed to a cross-product integration project as fullstack
-          developer using SAP's recommended technology stack
-        </li>
-      </BulletList>
-    </WorkExperience>
-    <WorkExperience
-      title="SAP"
-      role="Working Student S/4 HANA LoB Real Estate"
-      start="December 2021"
-      end="September 2022"
-    >
-      <BulletList>
-        <li>
-          Contributed to the developmment of Real Estate Management solutions
-          leveraging ABAP, SAP UI5, and SAP Fiori Elements
-        </li>
-        <li>
-          Created and evaluated prototypes as part of technical feasibility
-          analysis
-        </li>
-      </BulletList>
-    </WorkExperience>
-    <WorkExperience
-      title="XU Exponential University of Applied Sciences"
-      role="Working Student Coding & Development"
-      start="February 2020"
-      end="September 2021"
-    >
-      <BulletList>
-        <li>
-          Administered the company WordPress site and enhanced it by developing
-          custom components
-        </li>
-        <li>
-          Contributed to successful CRM implementation by establishing
-          automation workflows and training team members
-        </li>
-      </BulletList>
-    </WorkExperience>
-  </Section>
-  <Section>
-    <Heading2>Education</Heading2>
-    <Education
-      title="XU Exponential University of Applied Sciences"
-      degree="B.Sc. Coding & Software Engineering"
-      grade="1.3"
-    />
-  </Section>
-  <Section>
-    <Heading2>Skills & Certifications</Heading2>
-    <ul class="flex gap-4 flex-wrap">
-      <Skill>Node.js</Skill>
-      <Skill>Java</Skill>
-      <Skill>Python</Skill>
-      <Skill>React.js</Skill>
-      <Skill>SAP UI5</Skill>
-      <Skill>SAP CAP</Skill>
-    </ul>
-    <ul class="mt-6 grid gap-x-2 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="flex items-center justify-center">
       {
-        allCertifications.map(({ data }) => {
-          return (
-            <Certification name={data.name} link={data.link} icon={data.icon} />
-          );
-        })
+        personalDetails.links.map((link) => 
+            <a href={link.href} class={link.printUnderline && "underline"}>{link.printName}</a>
+            <span
+              class="inline-block mx-3 border-black border-2 rounded-full"
+            />
+        )
       }
-    </ul>
-  </Section>
-  <Section className="print:hidden">
-    <Heading2>Projects</Heading2>
-    <ul class="grid md:grid-cols-2 gap-4">
-      {
-        allProjects.map((project) => {
-          return <ProjectCard projectData={project.data} slug={project.slug} />;
-        })
-      }
-    </ul>
-  </Section>
+      <span>{personalDetails.location}</span>
+    </div>
+    <Section compact>
+      <Heading2 className="text-center" compact>Summary</Heading2>
+      <hr class="my-1" />
+      <p>
+       {personalDetails.summary}
+      </p>
+    </Section>
+    <Section compact>
+      <Heading2 className="text-center" compact>Experience</Heading2>
+      <hr class="my-1" />
+      <ul class="flex flex-col gap-1">
+        {
+          allExperience.map((experience) => (
+            <PrintEntry
+              title={experience.employer}
+              subtitle={experience.role}
+              location={experience.location}
+              dateRange={`${experience.from} - ${experience.to}`}
+            >
+              <BulletList>
+                {experience.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </BulletList>
+            </PrintEntry>
+          ))
+        }
+      </ul>
+    </Section>
+    <Section compact>
+      <Heading2 className="text-center" compact>Education</Heading2>
+      <hr class="my-1" />
+      <ul class="flex flex-col gap-1">
+        {
+          allEducation.map((education) => (
+            <PrintEntry
+              title={education.institution}
+              subtitle={education.degree}
+              location={education.location}
+              dateRange={`${education.from} - ${education.to}`}
+            >
+              {education.bullets.map((bullet) => (
+                <p>{bullet}</p>
+              ))}
+            </PrintEntry>
+          ))
+        }
+      </ul>
+    </Section>
+    <Section compact>
+      <Heading2 className="text-center" compact>Skills</Heading2>
+      <hr class="my-1" />
+      <ul>
+        <li>
+          <span class="font-bold">Language: </span>{personalDetails.languages.join(", ")}
+        </li>
+        <li>
+          <span class="font-bold">Technical: </span>{personalDetails.technicalSkills.join(", ")}
+        <li>
+          <span class="font-bold">Organizational: </span>{personalDetails.organizationalSkills.join(", ")}
+        </li>
+      </ul>
+    </Section>
+  </div>
 </CommonWrapper>

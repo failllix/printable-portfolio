@@ -18,10 +18,19 @@ const { title, description } = Astro.props;
       body {
         font-family: "Atkinson Hyperlegible", sans-serif;
       }
+
+      @media print {
+        body {
+          font-family: serif;
+        }
+        html {
+          font-size: 13px;
+        }
+      }
     </style>
   </head>
   <body class="overflow-x-hidden flex flex-col h-full">
-    <div class="px-4 pb-8 max-w-[1000px] mx-auto flex-1">
+    <div class="px-4 pb-8 max-w-[1000px] mx-auto flex-1 w-full">
       <slot />
     </div>
     <PrintHint />

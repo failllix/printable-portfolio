@@ -1,0 +1,14 @@
+{
+  "employer": "SAP",
+  "role": "Software Developer",
+  "location": "Potsdam, Germany",
+  "from": "November 2022",
+  "to": "today",
+  "bullets": [
+    "Engineered new service component for SAP's AI platform \"AI Core\" enabling cost-efficient serving of fine-tuned LLMs",
+    "Acted as Scrum Master, leading agile ceremonies to enhance and improve development process",
+    "Implemented full-stack features for the cross-product integration project \"SAP Start\" using SAP's recommended technology stack (SAP CAP, SAP UI5, and HANA Cloud)",
+    "Reduced manual configuration efforts of \"SAP Start\" by enhancing its setup automation",
+    "Collaborated with multiple product teams to integrate their services with \"SAP Start\" developing content and solving integration challenges"
+  ]
+}

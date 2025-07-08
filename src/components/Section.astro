@@ -2,6 +2,8 @@
 const { className } = Astro.props;
 
 import { twMerge } from "tailwind-merge";
+
+const { compact } = Astro.props;
 ---
 
 <style>
@@ -12,4 +14,6 @@ import { twMerge } from "tailwind-merge";
   }
 </style>
 
-<section class={twMerge("mt-8", className)}><slot /></section>
+<section class={twMerge(`${compact ? "mt-4" : "mt-8"}`, className)}>
+  <slot />
+</section>

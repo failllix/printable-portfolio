@@ -1,0 +1,40 @@
+[
+  {
+    "id": "felix",
+    "name": "Felix Prünte",
+    "description": "Curios and dedicated Full Stack Engineer eager to build high-quality applications.",
+    "summary": "Software Developer specializing in full-stack development. Proven experience in building and deploying scalable applications using JavaScript, Java, Python and SAP technologies (CAP, UI5, HANA Cloud). A proactive problem-solver dedicated to transforming complex requirements into user-friendly solutions.",
+    "location": "Potsdam, Germany",
+    "links": [
+      {
+        "name": "Email",
+        "printName": "info@felix-pruente.de",
+        "printUnderline": false,
+        "href": "mailto:info@felix-pruente.de"
+      },
+      {
+        "name": "LinkedIn",
+        "printName": "LinkedIn",
+        "printUnderline": true,
+        "href": "https://www.linkedin.com/in/felix-pruente/"
+      },
+      {
+        "name": "GitHub",
+        "printName": "GitHub",
+        "printUnderline": true,
+        "href": "https://github.com/failllix/"
+      }
+    ],
+    "languages": ["German (native)", "English (B2/C1)"],
+    "technicalSkills": [
+      "JavaScript",
+      "Java",
+      "Python",
+      "Node.js",
+      "React.js",
+      "SAP UI5",
+      "SAP CAP"
+    ],
+    "organizationalSkills": ["Scrum", "Kanban"]
+  }
+]
