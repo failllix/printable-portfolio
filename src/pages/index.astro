@@ -30,7 +30,12 @@ const allCertifications = allCertificationsCollection.sort(
     ("" + a.data.name).localeCompare(b.data.name)
 );
 
-const allExperience = (await getCollection("experience")).map((x) => x.data);
+const allExperienceCollection = (await getCollection("experience")).map((x) => x.data);
+
+const allExperience = allExperienceCollection.sort(
+  (a, b) => new Date(b.from).getTime() - new Date(a.from).getTime()
+);
+
 const allEducation = (await getCollection("education")).map((x) => x.data);
 const personalDetails = (await getCollection("personal")).map((x) => x.data)[0];
 ---
