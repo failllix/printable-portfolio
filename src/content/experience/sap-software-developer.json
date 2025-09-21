@@ -5,7 +5,7 @@
   "from": "November 2022",
   "to": "October 2025",
   "bullets": [
-    "Engineered new service component for SAP's AI platform \"AI Core\" enabling cost-efficient serving of fine-tuned LLMs cutting operational costs and improving scalability",
+    "Engineered and implemented full-stack features for a new service component for SAP's AI platform \"AI Core\" enabling cost-efficient serving of fine-tuned LLMs cutting operational costs and improving scalability",
     "Acted as Scrum Master, leading agile ceremonies to enhance and improve development process",
     "Implemented full-stack features for the cross-product integration project \"SAP Start\" (SAP's central entry point) using SAP's recommended technology stack (SAP CAP, SAP UI5, and HANA Cloud)",
     "Reduced manual configuration efforts of \"SAP Start\" by enhancing its setup automation",
