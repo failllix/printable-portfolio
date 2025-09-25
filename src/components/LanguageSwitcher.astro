@@ -1,0 +1,20 @@
+---
+import Link from "./Link.astro";
+
+import { languages } from "../i18n/ui";
+import { twMerge } from "tailwind-merge";
+
+const { className } = Astro.props;
+---
+
+<div class={twMerge("flex gap-3", className)}>
+  {
+    Object.values(languages).map(({ name, icon, href }) => {
+      return (
+        <Link href={href}>
+          <img class="w-6" alt={name} src={"/" + icon} />
+        </Link>
+      );
+    })
+  }
+</div>

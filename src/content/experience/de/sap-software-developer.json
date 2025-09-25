@@ -1,0 +1,14 @@
+{
+  "employer": "SAP",
+  "role": "Software Developer",
+  "location": "Potsdam, Deutschland",
+  "from": "November 2022",
+  "to": "Oktober 2025",
+  "bullets": [
+    "Entwicklung und Implementierung von Full-Stack Features für eine neue Servicekomponente der SAP-KI-Plattform „AI Core“, die das kosteneffiziente Bereitstellen von fine-tuned LLMs ermöglicht, wodurch Betriebskosten gesenkt und die Skalierbarkeit verbessert wurde",
+    "Tätigkeit als Scrum Master und Leitung agiler Meetings zur Verbesserung des Entwicklungsprozesses",
+    "Implementierung von Full-Stack Features für das produktübergreifende Integrationsprojekt „SAP Start“ (zentraler Einstiegspunkt von SAP) mit SAP empfohlenen Technologie-Stacks (SAP CAP, SAP UI5 und HANA Cloud)",
+    "Reduzierung des manuellen Konfigurationsaufwands von „SAP Start“ durch die Verbesserung der Einrichtungsautomatisierung",
+    "Zusammenarbeit mit mehreren Teams bei der Integration ihrer Produkte in „SAP Start“, inklusive Entwicklung von Inhalten und Lösung von Integrationsherausforderungen"
+  ]
+}

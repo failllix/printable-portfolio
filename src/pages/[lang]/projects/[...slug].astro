@@ -1,34 +1,38 @@
 ---
-import CommonWrapper from "../../layouts/CommonWrapper.astro";
-import Paragraph from "../../components/Paragraph.astro";
-import BlockQuote from "../../components/BlockQuote.astro";
-import BulletList from "../../components/BulletList.astro";
-import OrderedList from "../../components/OrderedList.astro";
-import Link from "../../components/Link.astro";
-import Heading1 from "../../components/Heading1.astro";
-import Heading2 from "../../components/Heading2.astro";
-import Heading3 from "../../components/Heading3.astro";
-import CoCreators from "../../components/CoCreators.astro";
-import WorkInProgressBadge from "../../components/WorkInProgressBadge.astro";
+import CommonWrapper from "../../../layouts/CommonWrapper.astro";
+import Paragraph from "../../../components/Paragraph.astro";
+import BlockQuote from "../../../components/BlockQuote.astro";
+import BulletList from "../../../components/BulletList.astro";
+import OrderedList from "../../../components/OrderedList.astro";
+import Link from "../../../components/Link.astro";
+import Heading1 from "../../../components/Heading1.astro";
+import Heading2 from "../../../components/Heading2.astro";
+import Heading3 from "../../../components/Heading3.astro";
+import CoCreators from "../../../components/CoCreators.astro";
+import WorkInProgressBadge from "../../../components/WorkInProgressBadge.astro";
 
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection("projects");
-  return projectEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+
+  return projectEntries.map((project) => {
+    const [lang, ...slug] = project.id.split("/");
+    return {
+      params: { lang, slug: slug.join("/") || undefined },
+      props: { project },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { project } = Astro.props;
 const { title, excerpt, year, coCreators, gitHubLink, isWorkInProgress } =
-  entry.data;
-const { Content } = await entry.render();
+  project.data;
+const { Content } = await project.render();
 ---
 
 <CommonWrapper
-  title={`Felix Prünte | ${entry.data.title}`}
+  title={`Felix Prünte | ${project.data.title}`}
   description={excerpt}
 >
   <Heading1>{title}</Heading1>

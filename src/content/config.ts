@@ -63,15 +63,17 @@ const personalCollection = defineCollection({
       const phoneNumber = import.meta.env.PUBLIC_PHONE_NUMBER_DISPLAY;
       const phoneNumberHref = import.meta.env.PUBLIC_PHONE_NUMBER_HREF;
       if (phoneNumber && phoneNumberHref) {
-        personalDetails[0].links = [
-          {
-            name: phoneNumber,
-            printName: phoneNumber,
-            href: phoneNumberHref,
-            printUnderline: false,
-          },
-          ...personalDetails[0].links,
-        ];
+        for (const index in personalDetails) {
+          personalDetails[index].links = [
+            {
+              name: phoneNumber,
+              printName: phoneNumber,
+              href: phoneNumberHref,
+              printUnderline: false,
+            },
+            ...personalDetails[index].links,
+          ];
+        }
       }
 
       return personalDetails;

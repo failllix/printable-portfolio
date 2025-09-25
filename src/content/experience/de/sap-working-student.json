@@ -1,0 +1,11 @@
+{
+  "employer": "SAP",
+  "role": "Werkstudent S/4 HANA LoB Real Estate",
+  "location": "Potsdam, Deutschland",
+  "from": "Dezember 2021",
+  "to": "September 2022",
+  "bullets": [
+    "Weiterentwicklung bestehender Anwendungen der SAP-Lösung für die Immobilienwirtschaft unter Verwendung von ABAP, SAP UI5 und SAP Fiori Elements",
+    "Erstellung und Evaluierung von Prototypen im Rahmen technischer Machbarkeitsanalysen"
+  ]
+}

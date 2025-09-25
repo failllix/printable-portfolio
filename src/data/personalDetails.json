@@ -1,6 +1,6 @@
 [
   {
-    "id": "felix",
+    "id": "en/felix",
     "name": "Felix Prünte",
     "description": "Curios and dedicated Full Stack Engineer eager to build high-quality applications.",
     "summary": "Software Developer specializing in full-stack development. Proven experience in building and deploying scalable applications using JavaScript, Java, Python and SAP technologies (CAP, UI5, HANA Cloud). A proactive problem-solver dedicated to transforming complex requirements into user-friendly solutions.",
@@ -26,6 +26,45 @@
       }
     ],
     "languages": ["German (native)", "English (C1)"],
+    "technicalSkills": [
+      "JavaScript",
+      "Java",
+      "Python",
+      "Node.js",
+      "React.js",
+      "git",
+      "SAP UI5",
+      "SAP CAP"
+    ],
+    "organizationalSkills": ["Scrum", "Kanban"]
+  },
+  {
+    "id": "de/felix",
+    "name": "Felix Prünte",
+    "description": "Neugieriger und engagierter Full-Stack Entwickler mit der Motivation qualitativ hochwertige Anwendungen zu entwickeln.",
+    "summary": "Full-Stack Softwareentwickler mit nachgewiesener Erfahrung in der Implementierung und Bereitstellung skalierbarer Anwendungen unter Verwendung von JavaScript, Java, Python und SAP-Technologien (CAP, UI5, HANA Cloud). Ein proaktiver Problemlöser, der es liebt komplexe Anforderungen in benutzerfreundliche Lösungen zu überführen.",
+    "location": "Winterthur, Switzerland",
+    "links": [
+      {
+        "name": "Email",
+        "printName": "info@felix-pruente.de",
+        "printUnderline": false,
+        "href": "mailto:info@felix-pruente.de"
+      },
+      {
+        "name": "LinkedIn",
+        "printName": "LinkedIn",
+        "printUnderline": true,
+        "href": "https://www.linkedin.com/in/felix-pruente/"
+      },
+      {
+        "name": "GitHub",
+        "printName": "GitHub",
+        "printUnderline": true,
+        "href": "https://github.com/failllix/"
+      }
+    ],
+    "languages": ["Deutsch (Muttersprache)", "English (C1)"],
     "technicalSkills": [
       "JavaScript",
       "Java",

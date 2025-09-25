@@ -1,5 +1,12 @@
 ---
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 import Paragraph from "./Paragraph.astro";
+
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const t = useTranslations(lang);
 ---
 
 <script>
@@ -9,17 +16,20 @@ import Paragraph from "./Paragraph.astro";
 </script>
 
 <div
-  class="print:hidden sticky bottom-0 left-0 flex items-center justify-center w-full px-3 py-1 bg-gray-800 text-white"
+  class="print:hidden sticky bottom-0 left-0 flex flex-col sm:flex-row items-center justify-center w-full px-3 py-2 bg-gray-800 text-white"
 >
   <Paragraph className="text-center">
-    This page is optimized for <span
+    {t("text.print_hint")}<span
       id="print-button"
       class="px-2 py-1 bg-white text-black
-  rounded-md cursor-pointer"
-      >printing</span
+rounded-md cursor-pointer"
+      >{t("text.print_highlight")}</span
     >
   </Paragraph>
-  <a href="https://github.com/failllix/printable-portfolio">
-    <img class="ml-6 w-6 h-6" src="/github-mark-white.svg" alt="GitHub logo" />
-  </a>
+  <div class="sm:ml-4 flex items-center">
+    <a href="https://github.com/failllix/printable-portfolio">
+      <img class="w-6 h-6" src="/github-mark-white.svg" alt="GitHub logo" />
+    </a>
+    <LanguageSwitcher className="ml-4" />
+  </div>
 </div>
