@@ -27,6 +27,8 @@ if (!images[imagePath])
   throw new Error(
     `"${coverImagePath}" does not exist in: "src/images/projects/"`
   );
+
+const slugWithoutLanguagePrefix = slug.split("/").slice(1);
 ---
 
 <li>
@@ -35,7 +37,7 @@ if (!images[imagePath])
   >
     <a
       class="absolute top-0 left-0 h-full w-full z-10"
-      href={`/projects/${slug}`}
+      href={`projects/${slugWithoutLanguagePrefix}`}
       aria-label={title}></a>
     {
       isWorkInProgress && (

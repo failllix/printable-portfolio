@@ -18,6 +18,9 @@ export default defineConfig({
       },
     },
   },
-
+  i18n: {
+    locales: ["en", "de"],
+    defaultLocale: "en",
+  },
   integrations: [tailwind(), mdx()],
 });

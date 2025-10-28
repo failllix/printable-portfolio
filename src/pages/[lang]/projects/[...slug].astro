@@ -19,7 +19,7 @@ export async function getStaticPaths() {
   return projectEntries.map((project) => {
     const [lang, ...slug] = project.id.split("/");
     return {
-      params: { lang, slug: slug.join("/") || undefined },
+      params: { lang, slug: slug.join("/").split(".")[0] || undefined },
       props: { project },
     };
   });
