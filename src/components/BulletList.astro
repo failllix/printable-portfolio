@@ -4,6 +4,6 @@ import { twMerge } from "tailwind-merge";
 const { className } = Astro.props;
 ---
 
-<ul class={twMerge("group my-3 group-[&]:my-1 list-disc pl-6", className)}>
+<ul class={twMerge("group my-3 in-[.group]:my-1 list-disc pl-6", className)}>
   <slot />
 </ul>

@@ -1,8 +1,6 @@
 import { defineConfig } from "astro/config";
-
-import tailwind from "@astrojs/tailwind";
-
 import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   markdown: {
@@ -17,10 +15,11 @@ export default defineConfig({
         usePolling: true,
       },
     },
+    plugins: [tailwindcss()],
   },
   i18n: {
     locales: ["en", "de"],
     defaultLocale: "en",
   },
-  integrations: [tailwind(), mdx()],
+  integrations: [mdx()],
 });
