@@ -36,6 +36,8 @@ const experienceCollection = defineCollection({
     employer: z.string(),
     role: z.string(),
     location: z.string(),
+    rawFrom: z.string().date(),
+    rawTo: z.string().date(),
     from: z.string(),
     to: z.string(),
     bullets: z.array(z.string()),
@@ -60,27 +62,12 @@ const personalCollection = defineCollection({
     parser: (fileContent) => {
       const personalDetails = JSON.parse(fileContent);
 
-      const phoneNumber = import.meta.env.PUBLIC_PHONE_NUMBER_DISPLAY;
-      const phoneNumberHref = import.meta.env.PUBLIC_PHONE_NUMBER_HREF;
-      if (phoneNumber && phoneNumberHref) {
-        for (const index in personalDetails) {
-          personalDetails[index].links = [
-            {
-              name: phoneNumber,
-              printName: phoneNumber,
-              href: phoneNumberHref,
-              printUnderline: false,
-            },
-            ...personalDetails[index].links,
-          ];
-        }
-      }
-
       return personalDetails;
     },
   }),
   schema: z.object({
     name: z.string(),
+    jobName: z.string(),
     description: z.string(),
     summary: z.string(),
     location: z.string(),

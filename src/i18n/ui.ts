@@ -8,6 +8,7 @@ export const defaultLang = "en";
 export const ui = {
   en: {
     "introduction.location": " 📍 Based in ",
+    "section.contact": "Contact",
     "section.summary": "Summary",
     "section.experience": "Work Experience",
     "section.education": "Education",
@@ -22,6 +23,7 @@ export const ui = {
   },
   de: {
     "introduction.location": " 📍 Wohnhaft in ",
+    "section.contact": "Kontakt",
     "section.summary": "Profil",
     "section.experience": "Erfahrung",
     "section.education": "Bildung",

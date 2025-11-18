@@ -2,6 +2,8 @@
   "employer": "SAP",
   "role": "Software Developer",
   "location": "Potsdam, Germany",
+  "rawFrom": "2022-11-01",
+  "rawTo": "2025-10-31",
   "from": "November 2022",
   "to": "October 2025",
   "bullets": [

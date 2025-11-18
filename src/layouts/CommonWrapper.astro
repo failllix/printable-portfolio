@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import "@fontsource/atkinson-hyperlegible";
+import "@fontsource-variable/montserrat";
 
 import PrintHint from "../components/PrintHint.astro";
 
@@ -16,23 +16,24 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <style>
       body {
-        font-family: "Atkinson Hyperlegible", sans-serif;
+        font-family: "Montserrat Variable", sans-serif;
       }
 
       @media print {
+        @page {
+          margin: 0;
+        }
         body {
-          font-family: serif;
+          print-color-adjust: exact;
         }
         html {
-          font-size: 13px;
+          font-size: 11.5px;
         }
       }
     </style>
   </head>
   <body class="overflow-x-hidden flex flex-col h-full">
-    <div class="px-4 pb-8 max-w-[1000px] mx-auto flex-1 w-full">
-      <slot />
-    </div>
+    <slot />
     <PrintHint />
   </body>
 </html>

@@ -7,7 +7,7 @@ const { className, id, compact } = Astro.props;
 <h2
   id={id}
   class={twMerge(
-    `${compact ? "text-xl" : "text-2xl"} font-bold ${compact ? "mb-1 mt-1" : "mb-2 mt-3"}`,
+    `${compact ? "text-xl mb-1 mt-1" : "text-2xl mb-2 mt-3"} font-bold`,
     className
   )}
 >

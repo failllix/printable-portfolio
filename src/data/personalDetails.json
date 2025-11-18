@@ -2,7 +2,8 @@
   {
     "id": "en/felix",
     "name": "Felix Prünte",
-    "description": "Curios and dedicated Full Stack Engineer eager to build high-quality applications.",
+    "jobName": "Full-Stack Software Developer",
+    "description": "Curios and dedicated Full-Stack Engineer eager to build high-quality applications.",
     "summary": "Software Developer specializing in full-stack development. Proven experience in building and deploying scalable applications using JavaScript, Java, Python and SAP technologies (CAP, UI5, HANA Cloud). A proactive problem-solver dedicated to transforming complex requirements into user-friendly solutions.",
     "location": "Winterthur, Switzerland",
     "links": [
@@ -14,13 +15,13 @@
       },
       {
         "name": "LinkedIn",
-        "printName": "LinkedIn",
+        "printName": "linkedin.com/in/felix-pruente",
         "printUnderline": true,
         "href": "https://www.linkedin.com/in/felix-pruente/"
       },
       {
         "name": "GitHub",
-        "printName": "GitHub",
+        "printName": "failllix",
         "printUnderline": true,
         "href": "https://github.com/failllix/"
       }
@@ -32,7 +33,7 @@
       "Python",
       "Node.js",
       "React.js",
-      "git",
+      "Git",
       "SAP UI5",
       "SAP CAP"
     ],
@@ -41,6 +42,7 @@
   {
     "id": "de/felix",
     "name": "Felix Prünte",
+    "jobName": "Full-Stack Softwareentwickler",
     "description": "Neugieriger und engagierter Full-Stack Entwickler mit der Motivation qualitativ hochwertige Anwendungen zu entwickeln.",
     "summary": "Full-Stack Softwareentwickler mit nachgewiesener Erfahrung in der Implementierung und Bereitstellung skalierbarer Anwendungen unter Verwendung von JavaScript, Java, Python und SAP-Technologien (CAP, UI5, HANA Cloud). Ein proaktiver Problemlöser, der es liebt komplexe Anforderungen in benutzerfreundliche Lösungen zu überführen.",
     "location": "Winterthur, Switzerland",
@@ -53,13 +55,13 @@
       },
       {
         "name": "LinkedIn",
-        "printName": "LinkedIn",
+        "printName": "linkedin.com/in/felix-pruente",
         "printUnderline": true,
-        "href": "https://www.linkedin.com/in/felix-pruente/"
+        "href": "https://www.linkedin.com/in/felix-pruente"
       },
       {
         "name": "GitHub",
-        "printName": "GitHub",
+        "printName": "failllix",
         "printUnderline": true,
         "href": "https://github.com/failllix/"
       }
@@ -71,7 +73,7 @@
       "Python",
       "Node.js",
       "React.js",
-      "git",
+      "Git",
       "SAP UI5",
       "SAP CAP"
     ],

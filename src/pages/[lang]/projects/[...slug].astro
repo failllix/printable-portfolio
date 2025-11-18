@@ -1,5 +1,6 @@
 ---
 import CommonWrapper from "../../../layouts/CommonWrapper.astro";
+import StandardLayout from "../../../layouts/StandardLayout.astro";
 import Paragraph from "../../../components/Paragraph.astro";
 import BlockQuote from "../../../components/BlockQuote.astro";
 import BulletList from "../../../components/BulletList.astro";
@@ -36,37 +37,39 @@ const { Content } = await project.render();
   title={`Felix Prünte | ${project.data.title}`}
   description={excerpt}
 >
-  <Heading1>{title}</Heading1>
-  <HorizontalRule className="my-4" />
-  <div>
-    {
-      isWorkInProgress && (
-        <div class="mt-2">
-          <WorkInProgressBadge />
-        </div>
-      )
-    }
-    <Paragraph>Year: {year}</Paragraph>
-    <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
-    <Link
-      className={`flex items-center ${gitHubLink == undefined ? "hidden" : ""}`}
-      href={gitHubLink}
-    >
-      <img class="w-4 h-4 mr-2" src="/github-mark.svg" />
-      "{title}" on GitHub
-    </Link>
-  </div>
-  <HorizontalRule className="mt-4 mb-10" />
-  <Content
-    components={{
-      h1: Heading1,
-      h2: Heading2,
-      h3: Heading3,
-      a: Link,
-      p: Paragraph,
-      ul: BulletList,
-      ol: OrderedList,
-      blockquote: BlockQuote,
-    }}
-  />
+  <StandardLayout>
+    <Heading1>{title}</Heading1>
+    <HorizontalRule className="my-4" />
+    <div>
+      {
+        isWorkInProgress && (
+          <div class="mt-2">
+            <WorkInProgressBadge />
+          </div>
+        )
+      }
+      <Paragraph>Year: {year}</Paragraph>
+      <CoCreators className="mt-2 z-20 relative" coCreators={coCreators} />
+      <Link
+        className={`flex items-center ${gitHubLink == undefined ? "hidden" : ""}`}
+        href={gitHubLink}
+      >
+        <img class="w-4 h-4 mr-2" src="/github-mark.svg" />
+        "{title}" on GitHub
+      </Link>
+    </div>
+    <HorizontalRule className="mt-4 mb-10" />
+    <Content
+      components={{
+        h1: Heading1,
+        h2: Heading2,
+        h3: Heading3,
+        a: Link,
+        p: Paragraph,
+        ul: BulletList,
+        ol: OrderedList,
+        blockquote: BlockQuote,
+      }}
+    />
+  </StandardLayout>
 </CommonWrapper>
