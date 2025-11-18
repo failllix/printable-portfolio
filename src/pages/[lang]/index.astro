@@ -12,6 +12,7 @@ import Certification from "../../components/Certification.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import BulletList from "../../components/BulletList.astro";
 import PrintEntry from "../../components/PrintEntry.astro";
+import HorizontalRule from "../../components/HorizontalRule.astro";
 
 import profileImage from "../../images/profile.jpg";
 
@@ -181,14 +182,14 @@ const personalDetails = (await getCollection("personal", idStartsWithExpectedLan
     </div>
     <Section compact>
       <Heading2 className="text-center" compact>{t('section.summary')}</Heading2>
-      <hr class="my-1" />
+      <HorizontalRule />
       <p>
        {personalDetails.summary}
       </p>
     </Section>
     <Section compact>
       <Heading2 className="text-center" compact>{t('section.experience')}</Heading2>
-      <hr class="my-1" />
+      <HorizontalRule />
       <ul class="flex flex-col gap-1">
         {
           allExperience.map((experience) => (
@@ -210,7 +211,7 @@ const personalDetails = (await getCollection("personal", idStartsWithExpectedLan
     </Section>
     <Section compact>
       <Heading2 className="text-center" compact>{t('section.education')}</Heading2>
-      <hr class="my-1" />
+      <HorizontalRule />
       <ul class="flex flex-col gap-1">
         {
           allEducation.map((education) => (
@@ -230,7 +231,7 @@ const personalDetails = (await getCollection("personal", idStartsWithExpectedLan
     </Section>
     <Section compact>
       <Heading2 className="text-center" compact>{t('section.skills')}</Heading2>
-      <hr class="my-1" />
+      <HorizontalRule />
       <ul>
         <li>
           <span class="font-bold">{t('skills.language')}: </span>{personalDetails.languages.join(", ")}

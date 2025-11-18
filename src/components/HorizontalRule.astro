@@ -1,0 +1,7 @@
+---
+import { twMerge } from "tailwind-merge";
+
+const { className } = Astro.props;
+---
+
+<hr class={twMerge("my-1 border-gray-200", className)} />

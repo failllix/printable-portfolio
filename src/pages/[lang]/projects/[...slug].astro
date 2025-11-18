@@ -10,6 +10,7 @@ import Heading2 from "../../../components/Heading2.astro";
 import Heading3 from "../../../components/Heading3.astro";
 import CoCreators from "../../../components/CoCreators.astro";
 import WorkInProgressBadge from "../../../components/WorkInProgressBadge.astro";
+import HorizontalRule from "../../../components/HorizontalRule.astro";
 
 import { getCollection } from "astro:content";
 
@@ -36,7 +37,7 @@ const { Content } = await project.render();
   description={excerpt}
 >
   <Heading1>{title}</Heading1>
-  <hr class="my-4" />
+  <HorizontalRule className="my-4" />
   <div>
     {
       isWorkInProgress && (
@@ -55,7 +56,7 @@ const { Content } = await project.render();
       "{title}" on GitHub
     </Link>
   </div>
-  <hr class="mt-4 mb-10" />
+  <HorizontalRule className="mt-4 mb-10" />
   <Content
     components={{
       h1: Heading1,
