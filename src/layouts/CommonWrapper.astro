@@ -2,8 +2,6 @@
 import "../styles/global.css";
 import "@fontsource-variable/montserrat";
 
-import PrintHint from "../components/PrintHint.astro";
-
 const { title, description } = Astro.props;
 ---
 
@@ -34,6 +32,5 @@ const { title, description } = Astro.props;
   </head>
   <body class="overflow-x-hidden flex flex-col h-full">
     <slot />
-    <PrintHint />
   </body>
 </html>

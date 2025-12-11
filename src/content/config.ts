@@ -67,6 +67,7 @@ const personalCollection = defineCollection({
   }),
   schema: z.object({
     name: z.string(),
+    cvFilename: z.string(),
     jobName: z.string(),
     description: z.string(),
     summary: z.string(),

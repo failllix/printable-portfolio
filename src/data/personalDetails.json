@@ -1,7 +1,8 @@
 [
   {
-    "id": "en/felix",
+    "id": "en",
     "name": "Felix Prünte",
+    "cvFilename": "Felix_Pruente_CV.pdf",
     "jobName": "Full-Stack Software Developer",
     "description": "Curios and dedicated Full-Stack Engineer eager to build high-quality applications.",
     "summary": "Software Developer specializing in full-stack development. Proven experience in building and deploying scalable applications using JavaScript, Java, Python and SAP technologies (CAP, UI5, HANA Cloud). A proactive problem-solver dedicated to transforming complex requirements into user-friendly solutions.",
@@ -40,8 +41,9 @@
     "organizationalSkills": ["Scrum", "Kanban"]
   },
   {
-    "id": "de/felix",
+    "id": "de",
     "name": "Felix Prünte",
+    "cvFilename": "Felix_Pruente_Lebenslauf.pdf",
     "jobName": "Full-Stack Softwareentwickler",
     "description": "Neugieriger und engagierter Full-Stack Entwickler mit der Motivation qualitativ hochwertige Anwendungen zu entwickeln.",
     "summary": "Full-Stack Softwareentwickler mit nachgewiesener Erfahrung in der Implementierung und Bereitstellung skalierbarer Anwendungen unter Verwendung von JavaScript, Java, Python und SAP-Technologien (CAP, UI5, HANA Cloud). Ein proaktiver Problemlöser, der es liebt komplexe Anforderungen in benutzerfreundliche Lösungen zu überführen.",

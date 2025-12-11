@@ -13,6 +13,7 @@ import Skill from "../../components/Skill.astro";
 import Certification from "../../components/Certification.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import BulletList from "../../components/BulletList.astro";
+import PrintHint from "../../components/PrintHint.astro";
 
 import profileImage from "../../images/profile.jpg";
 
@@ -321,4 +322,5 @@ const personalDetails = (
       </Section>
     </div>
   </div>
+  <PrintHint cvFilename={personalDetails.cvFilename} />
 </CommonWrapper>

@@ -4,26 +4,23 @@ import Paragraph from "./Paragraph.astro";
 
 import { useTranslations, getLangFromUrl } from "../i18n/utils";
 
+const { cvFilename } = Astro.props;
+
 const lang = getLangFromUrl(Astro.url);
 
 const t = useTranslations(lang);
 ---
 
-<script>
-  document.getElementById("print-button").addEventListener("click", () => {
-    window.print();
-  });
-</script>
-
 <div
   class="print:hidden sticky bottom-0 left-0 flex flex-col sm:flex-row items-center justify-center w-full px-3 py-2 bg-gray-800 text-white"
 >
   <Paragraph className="text-center">
-    {t("text.print_hint")}<span
-      id="print-button"
+    {t("text.print_hint")}<a
+      href={`/${cvFilename}`}
+      target="_blank"
       class="px-2 py-1 bg-white text-black
 rounded-md cursor-pointer"
-      >{t("text.print_highlight")}</span
+      >{t("text.print_highlight")}</a
     >
   </Paragraph>
   <div class="sm:ml-4 flex items-center">
