@@ -1,16 +1,24 @@
 ---
+import { getLangFromUrl } from "../i18n/utils";
 import "../styles/global.css";
 import "@fontsource-variable/montserrat";
 
 const { title, description } = Astro.props;
+const currentUrl = Astro.url;
+const language = getLangFromUrl(currentUrl);
 ---
 
-<html lang="en" class="h-full">
+<html lang={language} class="h-full">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={currentUrl} />
     <title>{title}</title>
     <style>
       body {
