@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 ---
 
 <div
-  class="print:hidden sticky bottom-0 left-0 flex flex-col sm:flex-row items-center justify-center w-full px-3 py-2 bg-gray-800 text-white"
+  class="print:hidden sticky bottom-[calc(var(--safe-area-max-inset-bottom-raw)-var(--safe-area-max-inset-bottom))] left-0 flex flex-col sm:flex-row items-center justify-center w-full px-3 py-2 bg-gray-800 text-white"
 >
   <Paragraph className="text-center">
     {t("text.print_hint")}<a
