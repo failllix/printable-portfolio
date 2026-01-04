@@ -5,7 +5,10 @@ const { className } = Astro.props;
 ---
 
 <div
-  class={twMerge("pb-8 px-4 max-w-[1000px] mx-auto flex-1 w-full", className)}
+  class={twMerge(
+    "pb-[calc(var(--spacing)*8+var(--safe-area-max-inset-bottom))] px-4 max-w-[1000px] mx-auto flex-1 w-full",
+    className
+  )}
 >
   <slot />
 </div>
