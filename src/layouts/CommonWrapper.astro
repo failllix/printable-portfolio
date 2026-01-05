@@ -41,7 +41,9 @@ const language = getLangFromUrl(currentUrl);
       }
     </style>
   </head>
-  <body class="overflow-x-hidden flex flex-col h-full">
-    <slot />
+  <body class="overflow-x-hidden h-full">
+    <main class="h-full flex flex-col">
+      <slot />
+    </main>
   </body>
 </html>
