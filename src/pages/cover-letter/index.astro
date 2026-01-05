@@ -1,0 +1,54 @@
+---
+import Heading1 from "../../components/Heading1.astro";
+import Heading2 from "../../components/Heading2.astro";
+import Section from "../../components/Section.astro";
+import CommonWrapper from "../../layouts/CommonWrapper.astro";
+
+import { getCollection } from "astro:content";
+
+const coverLetters = (await getCollection("cover-letters")).sort((a, b) => {
+  return a.data.company.localeCompare(b.data.company);
+});
+
+const groupedCoverLetters = Object.groupBy(coverLetters, (coverLetter) => {
+  return coverLetter.data.company;
+});
+---
+
+<CommonWrapper title="Cover Letters">
+  <Section className="px-12">
+    <Heading1>Cover Letters</Heading1>
+    <ul>
+      {
+        Object.entries(groupedCoverLetters).map(([company, coverLetters]) => {
+          const coverLetterItems = (coverLetters ?? [])
+            .sort((a, b) => {
+              return (
+                new Date(a.data.date).getTime() -
+                new Date(b.data.date).getTime()
+              );
+            })
+            .map((coverLetter) => {
+              return (
+                <li>
+                  <a
+                    class="text-blue-600 underline"
+                    href={`/cover-letter/${coverLetter.slug}`}
+                  >
+                    {coverLetter.data.date} - {coverLetter.data.title}
+                  </a>
+                </li>
+              );
+            });
+
+          return (
+            <>
+              <Heading2>{company}</Heading2>
+              <ul>{coverLetterItems}</ul>
+            </>
+          );
+        })
+      }
+    </ul>
+  </Section>
+</CommonWrapper>
