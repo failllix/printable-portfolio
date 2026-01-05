@@ -21,6 +21,16 @@ const projectsCollection = defineCollection({
   }),
 });
 
+const coverLetterCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    address: z.array(z.string()),
+    company: z.string(),
+  }),
+});
+
 const certificationsCollection = defineCollection({
   type: "data",
   schema: z.object({
@@ -86,10 +96,25 @@ const personalCollection = defineCollection({
   }),
 });
 
+const privatePersonalCollection = defineCollection({
+  loader: file("src/data/privatePersonalDetails.json", {
+    parser: (fileContent) => {
+      const privatePersonalDetails = JSON.parse(fileContent);
+
+      return privatePersonalDetails;
+    },
+  }),
+  schema: z.object({
+    address: z.array(z.string()),
+  }),
+});
+
 export const collections = {
   projects: projectsCollection,
+  "cover-letters": coverLetterCollection,
   certifications: certificationsCollection,
   experience: experienceCollection,
   education: educationCollection,
   personal: personalCollection,
+  "private-personal": privatePersonalCollection,
 };

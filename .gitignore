@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+
+# content
+src/content/cover-letters/*
+!src/content/cover-letters/.gitkeep
+src/data/privatePersonalDetails.json

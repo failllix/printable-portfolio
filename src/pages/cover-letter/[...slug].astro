@@ -1,0 +1,82 @@
+---
+import CommonWrapper from "../../layouts/CommonWrapper.astro";
+import Heading1 from "../../components/Heading1.astro";
+
+import { getCollection } from "astro:content";
+import Section from "../../components/Section.astro";
+
+export async function getStaticPaths() {
+  const coverLetterEntries = await getCollection("cover-letters");
+
+  return coverLetterEntries.map((coverLetter) => {
+    return {
+      params: { slug: coverLetter.slug },
+      props: { coverLetter },
+    };
+  });
+}
+
+const personalDetails = (await getCollection("personal")).map((x) => x.data)[0];
+const privatePersonalDetails = (await getCollection("private-personal")).map(
+  (x) => x.data
+)[0];
+
+const { coverLetter } = Astro.props;
+const { title, date, address, company } = coverLetter.data;
+const { Content } = await coverLetter.render();
+---
+
+<CommonWrapper
+  title={`Cover_letter_${company.toLowerCase().replaceAll(" ", "_")}`}
+>
+  <div class="flex h-full w-full max-w-6xl mx-auto">
+    <aside class="bg-gray-950 w-16 h-full shrink-0">
+      <div class="px-12 mt-20 text-white"></div>
+    </aside>
+
+    <div class="px-12 grow">
+      <Section className="mt-4">
+        <div class="flex flex-col justify-center">
+          <Heading1 className="text-7xl tracking-widest line"
+            ><span class="font-light"
+              >{
+                personalDetails.name.toUpperCase().split(" ").slice(0, -1)
+              }</span
+            ><br />
+            <span class="font-extrabold"
+              >{personalDetails.name.toUpperCase().split(" ").at(-1)}
+            </span></Heading1
+          >
+          <p class="text-xl opacity-70">
+            {personalDetails.jobName.toUpperCase()}
+          </p>
+        </div>
+      </Section>
+
+      <Section className="mt-12">
+        <p class="flex flex-col text-right">
+          {
+            [personalDetails.name, ...privatePersonalDetails.address].map(
+              (addressLine) => <span class="block">{addressLine}</span>
+            )
+          }
+        </p>
+        <p class="flex flex-col">
+          {
+            address.map((addressLine) => (
+              <span class="block">{addressLine}</span>
+            ))
+          }
+        </p>
+      </Section>
+
+      <Section className="mt-8">
+        <p class="mb-6 text-right">{date}</p>
+        <p class="mb-3 font-bold text-xl">{title}</p>
+        <div class="flex flex-col gap-4">
+          <Content />
+        </div>
+      </Section>
+    </div>
+  </div>
+</CommonWrapper>
