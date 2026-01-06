@@ -234,6 +234,21 @@ const personalDetails = (
 
         <Section className="mt-12">
           <Heading2 className="mb-4 font-light tracking-widest">
+            {t("section.languages").toUpperCase()}
+          </Heading2>
+          <ul class="flex flex-col gap-1">
+            {
+              personalDetails.languages.map((language) => (
+                <li>
+                  <p>{language}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </Section>
+
+        <Section className="mt-12">
+          <Heading2 className="mb-4 font-light tracking-widest">
             {t("section.education").toUpperCase()}
           </Heading2>
           <ul>
