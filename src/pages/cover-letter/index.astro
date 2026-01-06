@@ -6,6 +6,10 @@ import CommonWrapper from "../../layouts/CommonWrapper.astro";
 
 import { getCollection } from "astro:content";
 
+if (!import.meta.env.DEV) {
+  return Astro.rewrite("/");
+}
+
 const coverLetters = (await getCollection("cover-letters")).sort((a, b) => {
   return a.data.company.localeCompare(b.data.company);
 });
