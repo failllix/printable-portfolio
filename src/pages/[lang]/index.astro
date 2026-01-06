@@ -86,9 +86,6 @@ const personalDetails = (
     <Section className="flex justify-between items-center">
       <div class="grow">
         <Heading1 className="mt-0">{personalDetails.name}</Heading1>
-        <Paragraph>
-          {personalDetails.description}
-        </Paragraph>
         <Paragraph
           >{t("introduction.location")}{personalDetails.location}</Paragraph
         >
@@ -257,7 +254,7 @@ const personalDetails = (
     </aside>
 
     <div class="px-12 grow">
-      <div class="h-80 flex flex-col justify-center">
+      <div class="h-64 flex flex-col justify-center">
         <Heading1 className="text-7xl tracking-widest line"
           ><span class="font-light"
             >{personalDetails.name.toUpperCase().split(" ").slice(0, -1)}</span

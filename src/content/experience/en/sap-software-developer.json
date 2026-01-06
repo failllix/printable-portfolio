@@ -7,10 +7,10 @@
   "from": "November 2022",
   "to": "October 2025",
   "bullets": [
-    "Engineered and implemented full-stack features for a new service component for SAP's AI platform \"AI Core\" enabling cost-efficient serving of fine-tuned LLMs cutting operational costs and improving scalability",
-    "Acted as Scrum Master, leading agile ceremonies to enhance and improve development process",
-    "Implemented full-stack features for the cross-product integration project \"SAP Start\" (SAP's central entry point) using SAP's recommended technology stack (SAP CAP, SAP UI5, and HANA Cloud)",
-    "Reduced manual configuration efforts of \"SAP Start\" by enhancing its setup automation",
-    "Collaborated with multiple product teams to integrate their services with \"SAP Start\" developing content and solving integration challenges"
+    "Engineered a microservice architecture to support dynamic serving of LoRA adapters, enabling resource-efficient scaling of fine-tuned LLM use cases",
+    "Developed full-stack features for a central enterprise entry portal, integrating data across products",
+    "Enhanced the portal's setup automation by refactoring the codebase for improved stability, while consulting external product teams to ensure their seamless integration",
+    "Developed and evaluated technical prototypes for R&D initiatives, including a Generative AI solution for dynamic UI creation, and presented feasibility findings to senior management",
+    "Led agile development cycles as Scrum Master, optimizing team workflows and facilitating ceremonies"
   ]
 }

@@ -1,13 +1,13 @@
 {
   "employer": "SAP",
-  "role": "Working Student S/4 HANA LoB Real Estate",
+  "role": "Working Student Software Engineering (Real Estate)",
   "location": "Potsdam, Germany",
   "rawFrom": "2021-12-01",
   "rawTo": "2022-09-30",
   "from": "December 2021",
   "to": "September 2022",
   "bullets": [
-    "Enhanced existing applications of SAP's Real Estate Management solution leveraging ABAP, SAP UI5, and SAP Fiori Elements",
+    "Maintained and enhanced enterprise applications of SAP's Real Estate Management solution",
     "Created and evaluated prototypes as part of technical feasibility analysis"
   ]
 }

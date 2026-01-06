@@ -4,8 +4,7 @@
     "name": "Felix Prünte",
     "cvFilename": "Felix_Pruente_CV.pdf",
     "jobName": "Full-Stack Software Developer",
-    "description": "Curios and dedicated Full-Stack Engineer eager to build high-quality applications.",
-    "summary": "Software Developer specializing in full-stack development. Proven experience in building and deploying scalable applications using JavaScript, Java, Python and SAP technologies (CAP, UI5, HANA Cloud). A proactive problem-solver dedicated to transforming complex requirements into user-friendly solutions.",
+    "summary": "Full-Stack Software Engineer with 4+ years of experience building scalable, cloud-native applications. Experienced in Python and Node.js for backend services and AI infrastructure. Proven track record of optimizing operational costs through resource-efficient AI implementations and drastically reducing customer onboarding time via automated service provisioning.",
     "location": "Winterthur, Switzerland",
     "links": [
       {
@@ -30,13 +29,13 @@
     "languages": ["German (native)", "English (C1)"],
     "technicalSkills": [
       "JavaScript",
-      "Java",
       "Python",
+      "Java",
       "Node.js",
       "React.js",
       "Git",
-      "SAP UI5",
-      "SAP CAP"
+      "SQL",
+      "Spring Boot"
     ],
     "organizationalSkills": ["Scrum", "Kanban"]
   },
@@ -45,8 +44,7 @@
     "name": "Felix Prünte",
     "cvFilename": "Felix_Pruente_Lebenslauf.pdf",
     "jobName": "Full-Stack Softwareentwickler",
-    "description": "Neugieriger und engagierter Full-Stack Entwickler mit der Motivation qualitativ hochwertige Anwendungen zu entwickeln.",
-    "summary": "Full-Stack Softwareentwickler mit nachgewiesener Erfahrung in der Implementierung und Bereitstellung skalierbarer Anwendungen unter Verwendung von JavaScript, Java, Python und SAP-Technologien (CAP, UI5, HANA Cloud). Ein proaktiver Problemlöser, der es liebt komplexe Anforderungen in benutzerfreundliche Lösungen zu überführen.",
+    "summary": "Full-Stack Softwareentwickler mit über 4 Jahren Erfahrung in der Konzeption und Entwicklung skalierbarer Cloud-Native-Anwendungen. Expertise in Node.js und Python zur Realisierung robuster Backend- und KI-Services. Nachweisliche Erfolge in der Kostenoptimierung durch effiziente Bereitstellung von KI-Anwendungen sowie der Automatisierung von Provisionierungsprozessen zur drastischen Verkürzung von Einrichtungszeiten.",
     "location": "Winterthur, Switzerland",
     "links": [
       {
@@ -71,13 +69,13 @@
     "languages": ["Deutsch (Muttersprache)", "English (C1)"],
     "technicalSkills": [
       "JavaScript",
-      "Java",
       "Python",
+      "Java",
       "Node.js",
       "React.js",
       "Git",
-      "SAP UI5",
-      "SAP CAP"
+      "SQL",
+      "Spring Boot"
     ],
     "organizationalSkills": ["Scrum", "Kanban"]
   }
