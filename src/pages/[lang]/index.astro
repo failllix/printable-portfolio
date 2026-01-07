@@ -169,6 +169,12 @@ const personalDetails = (
       </ul>
     </Section>
     <Section>
+      <Heading2>{t("section.languages")}</Heading2>
+      <ul class="flex gap-4 flex-wrap">
+        {personalDetails.languages.map((language) => <Skill>{language}</Skill>)}
+      </ul>
+    </Section>
+    <Section>
       {allProjects.length > 0 && <Heading2>{t("section.projects")}</Heading2>}
       <ul class="grid md:grid-cols-2 gap-4">
         {
