@@ -1,6 +1,6 @@
 export const languages = {
-  en: { name: "English", icon: "union-jack.svg", href: "/en" },
-  de: { name: "Deutsch", icon: "germany-flag.svg", href: "/de" },
+  en: { name: "English", icon: "union-jack.svg", href: "/en/" },
+  de: { name: "Deutsch", icon: "germany-flag.svg", href: "/de/" },
 };
 
 export const defaultLang = "en";
