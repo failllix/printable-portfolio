@@ -2,13 +2,18 @@
 import { getLangFromUrl } from "../i18n/utils";
 import "../styles/global.css";
 import "@fontsource-variable/montserrat";
+import { ClientRouter, fade } from "astro:transitions";
 
 const { title, description } = Astro.props;
 const currentUrl = Astro.url;
 const language = getLangFromUrl(currentUrl);
 ---
 
-<html lang={language} class="h-full">
+<html
+  lang={language}
+  class="h-full"
+  transition:animate={fade({ duration: "0.2s" })}
+>
   <head>
     <meta charset="utf-8" />
     <meta
@@ -23,6 +28,7 @@ const language = getLangFromUrl(currentUrl);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={currentUrl} />
     <title>{title}</title>
+    <ClientRouter />
     <style>
       body {
         font-family: "Montserrat Variable", sans-serif;
