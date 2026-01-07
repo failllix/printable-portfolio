@@ -28,7 +28,7 @@ if (!images[imagePath])
     `"${coverImagePath}" does not exist in: "src/images/projects/"`
   );
 
-const slugWithoutLanguagePrefix = slug.split("/").slice(1);
+const slugWithoutLanguagePrefix = slug.split("/").slice(1) + "/";
 ---
 
 <li>

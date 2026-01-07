@@ -23,4 +23,6 @@ export default defineConfig({
     defaultLocale: "en",
   },
   integrations: [mdx(), relativeLinks()],
+  trailingSlash: "always",
+  site: "https://felix-pruente.de",
 });
