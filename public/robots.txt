@@ -4,3 +4,5 @@ Disallow: /$
 
 User-agent: AdsBot-Google
 Disallow: /
+
+Sitemap: https://felix-pruente.de/sitemap-index.xml

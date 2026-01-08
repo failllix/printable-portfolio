@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import relativeLinks from "astro-relative-links";
 
@@ -22,7 +23,19 @@ export default defineConfig({
     locales: ["en", "de"],
     defaultLocale: "en",
   },
-  integrations: [mdx(), relativeLinks()],
+  integrations: [
+    mdx(),
+    relativeLinks(),
+    sitemap({
+      filter: (page) => {
+        const excludedUrlParts = ["/cover-letter", "/projects"];
+
+        return !excludedUrlParts.some((excludedUrlPart) =>
+          page.includes(excludedUrlPart)
+        );
+      },
+    }),
+  ],
   trailingSlash: "always",
   site: "https://felix-pruente.de",
 });
