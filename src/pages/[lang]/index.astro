@@ -78,8 +78,8 @@ const personalDetails = (
 ---
 
 <CommonWrapper
-  title={personalDetails.name}
-  description={`${personalDetails.name}'s resume and portfolio page`}
+  title={`${personalDetails.name} | ${t("text.index_title")}`}
+  description={personalDetails.description}
   className
 >
   <StandardLayout className="print:hidden">

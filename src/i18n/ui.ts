@@ -18,6 +18,7 @@ export const ui = {
     "text.final_grade": "Final grade: ",
     "text.print_hint": "This page is optimized for ",
     "text.print_highlight": "printing",
+    "text.index_title": "Resume and Portfolio",
   },
   de: {
     "introduction.location": " 📍 Wohnhaft in ",
@@ -31,5 +32,6 @@ export const ui = {
     "text.final_grade": "Note: ",
     "text.print_hint": "Diese Seite ist optmiert zum ",
     "text.print_highlight": "Drucken",
+    "text.index_title": "Lebenslauf und Portfolio",
   },
 } as const;

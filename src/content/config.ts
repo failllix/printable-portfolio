@@ -79,6 +79,7 @@ const personalCollection = defineCollection({
     name: z.string(),
     cvFilename: z.string(),
     jobName: z.string(),
+    description: z.string(),
     summary: z.string(),
     location: z.string(),
     links: z.array(
