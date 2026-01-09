@@ -10,9 +10,13 @@ if (!import.meta.env.DEV) {
   return Astro.rewrite("/");
 }
 
-const coverLetters = (await getCollection("cover-letters")).sort((a, b) => {
-  return a.data.company.localeCompare(b.data.company);
-});
+const coverLetters = (await getCollection("cover-letters"))
+  .sort((a, b) => {
+    return a.data.company.localeCompare(b.data.company);
+  })
+  .sort((a, b) => {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  });
 
 const groupedCoverLetters = Object.groupBy(coverLetters, (coverLetter) => {
   return coverLetter.data.company;
@@ -28,8 +32,8 @@ const groupedCoverLetters = Object.groupBy(coverLetters, (coverLetter) => {
           const coverLetterItems = (coverLetters ?? [])
             .sort((a, b) => {
               return (
-                new Date(a.data.date).getTime() -
-                new Date(b.data.date).getTime()
+                new Date(b.data.date).getTime() -
+                new Date(a.data.date).getTime()
               );
             })
             .map((coverLetter) => {
