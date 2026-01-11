@@ -8,8 +8,8 @@
   "to": "Oktober 2025",
   "bullets": [
     "Konzeption und Entwicklung einer Microservice-Architektur für das dynamische Bereitstellen von LoRA-Adaptern zur ressourceneffizienten Skalierung von Use Cases mit Fine-Tuned LLMs",
-    "Entwicklung von Full-Stack-Features für einen zentralen, unternehmensweiten Einstiegspunkt (Enterprise Entry Portal)",
-    "Optimierung der Setup-Automatisierung des Portals durch Refactoring der Codebasis zur Steigerung der Stabilität sowie Beratung externer Produktteams zur Sicherstellung einer nahtlosen Integration",
+    "Entwicklung von Full-Stack-Features für einen zentralen, produktübergreifenden Einstiegspunkt",
+    "Optimierung der Setup-Automatisierung des Portals durch Refactoring der Codebasis zur Steigerung der Stabilität sowie Beratung von Produktteams zur Sicherstellung einer nahtlosen Integration",
     "Entwicklung und Evaluierung technischer Prototypen für strategische Initiativen, inklusive einer Generative-AI-Lösung zur dynamischen UI-Erstellung, sowie Präsentation der Machbarkeitsanalysen vor dem Management",
     "Leitung der Entwicklungszyklen als Scrum Master, inklusive Optimierung der Team-Workflows und Moderation der Scrum-Events"
   ]
